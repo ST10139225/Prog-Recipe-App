@@ -1,8 +1,10 @@
-﻿class Program
+﻿using ST10139225_Part_1.Classes;
+
+class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Please help me Lord");
+        ingredients i = new ingredients();
     }
 
 
