@@ -1,0 +1,15 @@
+C:\Users\lab_services_student\source\repos\ST10139225_Part_1_Solution\ST10139225_Part_1\bin\Debug\net6.0\ST10139225_Part_1.exe
+C:\Users\lab_services_student\source\repos\ST10139225_Part_1_Solution\ST10139225_Part_1\bin\Debug\net6.0\ST10139225_Part_1.deps.json
+C:\Users\lab_services_student\source\repos\ST10139225_Part_1_Solution\ST10139225_Part_1\bin\Debug\net6.0\ST10139225_Part_1.runtimeconfig.json
+C:\Users\lab_services_student\source\repos\ST10139225_Part_1_Solution\ST10139225_Part_1\bin\Debug\net6.0\ST10139225_Part_1.dll
+C:\Users\lab_services_student\source\repos\ST10139225_Part_1_Solution\ST10139225_Part_1\bin\Debug\net6.0\ST10139225_Part_1.pdb
+C:\Users\lab_services_student\source\repos\ST10139225_Part_1_Solution\ST10139225_Part_1\obj\Debug\net6.0\ST10139225_Part_1.csproj.AssemblyReference.cache
+C:\Users\lab_services_student\source\repos\ST10139225_Part_1_Solution\ST10139225_Part_1\obj\Debug\net6.0\ST10139225_Part_1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lab_services_student\source\repos\ST10139225_Part_1_Solution\ST10139225_Part_1\obj\Debug\net6.0\ST10139225_Part_1.AssemblyInfoInputs.cache
+C:\Users\lab_services_student\source\repos\ST10139225_Part_1_Solution\ST10139225_Part_1\obj\Debug\net6.0\ST10139225_Part_1.AssemblyInfo.cs
+C:\Users\lab_services_student\source\repos\ST10139225_Part_1_Solution\ST10139225_Part_1\obj\Debug\net6.0\ST10139225_Part_1.csproj.CoreCompileInputs.cache
+C:\Users\lab_services_student\source\repos\ST10139225_Part_1_Solution\ST10139225_Part_1\obj\Debug\net6.0\ST10139225_Part_1.dll
+C:\Users\lab_services_student\source\repos\ST10139225_Part_1_Solution\ST10139225_Part_1\obj\Debug\net6.0\refint\ST10139225_Part_1.dll
+C:\Users\lab_services_student\source\repos\ST10139225_Part_1_Solution\ST10139225_Part_1\obj\Debug\net6.0\ST10139225_Part_1.pdb
+C:\Users\lab_services_student\source\repos\ST10139225_Part_1_Solution\ST10139225_Part_1\obj\Debug\net6.0\ST10139225_Part_1.genruntimeconfig.cache
+C:\Users\lab_services_student\source\repos\ST10139225_Part_1_Solution\ST10139225_Part_1\obj\Debug\net6.0\ref\ST10139225_Part_1.dll
