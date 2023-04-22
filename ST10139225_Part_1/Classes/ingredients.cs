@@ -15,8 +15,10 @@ namespace ST10139225_Part_1.Classes
         public float quantity;//To store the original quantity of the ingredient
         public float Scaled_quantity; //To store the scaled quantity of the ingredient
         public string Unit_of_measurement; // To store the unit of measurement
+        public string Scale_factor; // To store the factor of scale
 
-        
+
+
         public ingredients() {
 
             string UserInput = null; // To store user input.
@@ -29,7 +31,7 @@ namespace ST10139225_Part_1.Classes
             Console.WriteLine("Please enter the quantity of "+ Name+":");
             UserInput = Console.ReadLine();
             quantity = float.Parse(UserInput);
-
+            Scaled_quantity = quantity; // To init the scaled value with the orginal value. 
             
 
             // To store the Unit of measurement for the ingredient.
@@ -58,6 +60,13 @@ namespace ST10139225_Part_1.Classes
         {
             Scaled_quantity = quantity / multiple;
 
+        }
+
+
+        //To print ingredient
+        public string printIngredient()
+        {
+            return "Name: " + Name + "\n Quantity: " + Scaled_quantity + "\n factor of scale: " + Scale_factor;
         }
 
     }
