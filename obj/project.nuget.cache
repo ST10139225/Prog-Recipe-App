@@ -1,16 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "saconB/9rvzvvY8VxZrYzXEmHh5iAmEK3Mw7u7iDTo1hfiLCzyp0uUWKWQoB1C0m+OhFJDQYHOgu8aWzZWfgBQ==",
+  "dgSpecHash": "NjGaIsI1pvIJkq5untDSsfixnbUYhmQhBI36i0jBrXpYOVIZtJx6sGGQVN2NxsNhv6y82MEgqT8/sqStyzukZA==",
   "success": true,
   "projectFilePath": "C:\\Users\\lab_services_student\\source\\repos\\ST10139225_K_Baholo_Part1\\ST10139225_K_Baholo_Part1\\ST10139225_K_Baholo_Part1.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\lab_services_student\\.nuget\\packages\\microsoft.netcore.app\\2.1.0\\microsoft.netcore.app.2.1.0.nupkg.sha512",
-    "C:\\Users\\lab_services_student\\.nuget\\packages\\microsoft.netcore.dotnetapphost\\2.1.0\\microsoft.netcore.dotnetapphost.2.1.0.nupkg.sha512",
-    "C:\\Users\\lab_services_student\\.nuget\\packages\\microsoft.netcore.dotnethostpolicy\\2.1.0\\microsoft.netcore.dotnethostpolicy.2.1.0.nupkg.sha512",
-    "C:\\Users\\lab_services_student\\.nuget\\packages\\microsoft.netcore.dotnethostresolver\\2.1.0\\microsoft.netcore.dotnethostresolver.2.1.0.nupkg.sha512",
-    "C:\\Users\\lab_services_student\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.0\\microsoft.netcore.platforms.2.1.0.nupkg.sha512",
-    "C:\\Users\\lab_services_student\\.nuget\\packages\\microsoft.netcore.targets\\2.1.0\\microsoft.netcore.targets.2.1.0.nupkg.sha512",
-    "C:\\Users\\lab_services_student\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }

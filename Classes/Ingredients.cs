@@ -24,9 +24,20 @@ namespace ST10139225_K_Baholo_Part1.Classes
             UserInput = Console.ReadLine();
             Quanity_of_ingredient = float.Parse(UserInput);
 
+
             Console.WriteLine("Please enter the unit of measurement for the quantity of: " + Quanity_of_ingredient);
             UserInput = Console.ReadLine();
-            Unit_of_Measurement = UserInput;
+
+            if (set_unit_of_measurement(UserInput) == true)
+            {
+                Unit_of_Measurement = UserInput;
+            }
+            else
+            {
+                Console.WriteLine("Please enter as unit of meaasurement: spoon or spoons, tea spoon or tea spoons, cup or cups, \n " +
+                                  "g or grams, kg or kilograms, ml or milliliters, l or liter or liters");
+            }
+
 
 
 
@@ -48,48 +59,47 @@ namespace ST10139225_K_Baholo_Part1.Classes
                 Scaled_quantity = Quanity_of_ingredient;
 
             }
-            public void set_unit_of_measurement()
+            public Boolean set_unit_of_measurement(string userinput)
             {
-                int option_measurement = 0; //This variable will store the number of the option selected by the user as to which 
-                                            //unit of measurement between tblspn, tsp, ml,g,and cups.
+                /*
+                 This method will be used to ensure that the user enters the correct unit of measurement.
+                 */
+
+            bool CorrectInput= false;
+
+            if ((String.Equals(userinput, "Spoon", StringComparison.OrdinalIgnoreCase)) ||
+                (String.Equals(userinput, "Spoons", StringComparison.OrdinalIgnoreCase)) ||
+                (String.Equals(userinput, "tea spoon", StringComparison.OrdinalIgnoreCase)) ||
+                (String.Equals(userinput, "tea spoons", StringComparison.OrdinalIgnoreCase)) ||
+                (String.Equals(userinput, "cup", StringComparison.OrdinalIgnoreCase)) ||
+                (String.Equals(userinput, "cups", StringComparison.OrdinalIgnoreCase)) ||
+                (String.Equals(userinput, "g", StringComparison.OrdinalIgnoreCase)) ||
+                (String.Equals(userinput, "grams", StringComparison.OrdinalIgnoreCase)) ||
+                (String.Equals(userinput, "kg", StringComparison.OrdinalIgnoreCase)) ||
+                (String.Equals(userinput, "kilograms", StringComparison.OrdinalIgnoreCase)) ||
+                (String.Equals(userinput, "ml", StringComparison.OrdinalIgnoreCase)) ||
+                (String.Equals(userinput, "milliliters", StringComparison.OrdinalIgnoreCase)) ||
+                (String.Equals(userinput, "l", StringComparison.OrdinalIgnoreCase)) ||
+                (String.Equals(userinput, "liter", StringComparison.OrdinalIgnoreCase)) ||
+                (String.Equals(userinput, "liters", StringComparison.OrdinalIgnoreCase)))
+                CorrectInput = true;
+
+            return CorrectInput;
 
 
 
-                Console.WriteLine("Please select the number for the unit of measurement \n");
-                Console.WriteLine("Option 1: table spoon \n");
-                Console.WriteLine("Option 2: tea spoon\n");
-                Console.WriteLine("Option 3: ml\n");
-                Console.WriteLine("Option 4: g\n");
-                Console.WriteLine("Option 5: cups\n");
-                option_measurement = int.Parse(Console.ReadLine());
 
-                switch (option_measurement)
-                {
-                    case 1:
-                        Unit_of_Measurement = "table spoon(s)";
-                        break;
-                    case 2:
-                        Unit_of_Measurement = "tea spoon(s)";
-                        break;
-                    case 3:
-                        Unit_of_Measurement = "ml";
-                        break;
-                    case 4:
-                        Unit_of_Measurement = "g";
-                        break;
-                    case 5:
-                    Unit_of_Measurement = "cups";
-                        break;
+()
 
-                }
 
-                Console.WriteLine("Please enter the name of the ingredient");
-                Quanity_of_ingredient = int.Parse(Console.ReadLine());
+
+
+
 
 
 
             }
-            public void scale_up_ingredient(int Factor)
+        public void scale_up_ingredient(int Factor)
             {
                 Scaled_quantity = Quanity_of_ingredient * Factor;
                 if (Scaled_quantity >= 8 && Unit_of_Measurement.Equals("table spoon(s)"))
