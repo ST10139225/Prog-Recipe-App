@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ST10139225_K_Baholo_Part1.Classes
 {
+    //This is a class for recipes. 
     internal class Recipe
     {
         //To store all the steps
@@ -13,7 +14,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
         List<Steps> List_of_Steps = new List<Steps>();
 
 
-        private void addSteps()
+        private void Addsteps()
         {
             string Instruction;
             for (int count = 0; count <= Number_of_steps; count++)
