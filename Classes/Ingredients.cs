@@ -8,7 +8,10 @@ namespace ST10139225_K_Baholo_Part1.Classes
 {
     internal class Ingredients
     {
-        
+            private string Name_of_Ingredient;
+            private float Quanity_of_ingredient;
+            private string Unit_of_Measurement;
+            private float Scaled_quantity;
 
         public Ingredients()
         {
@@ -18,18 +21,21 @@ namespace ST10139225_K_Baholo_Part1.Classes
             Name_of_Ingredient = UserInput;
             
             Console.WriteLine("Please enter the quantity for "+Name_of_Ingredient+":");
-            
+            UserInput = Console.ReadLine();
+            Quanity_of_ingredient = float.Parse(UserInput);
+
+            Console.WriteLine("Please enter the unit of measurement for the quantity of: " + Quanity_of_ingredient);
+            UserInput = Console.ReadLine();
+            Unit_of_Measurement = UserInput;
+
 
 
 
         }
-            private string Name_of_Ingredient;
-            private int Quanity_of_ingredient;
-            private string Unit_of_Measurement;
-            private float Scaled_quantity;
 
 
-            public string PrintIngredient()
+
+        public string PrintIngredient()
             {
                 string IngredientString = "Name: " + Name_of_Ingredient + "\nQuantity: " + Quanity_of_ingredient + "\nMeasurment(Unit)" + Unit_of_Measurement;
 
@@ -72,7 +78,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
                         Unit_of_Measurement = "g";
                         break;
                     case 5:
-                        Unit_of_Measurement = "cups";
+                    Unit_of_Measurement = "cups";
                         break;
 
                 }

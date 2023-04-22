@@ -1,0 +1,5 @@
+C:\Users\lab_services_student\source\repos\ST10139225_K_Baholo_Part1\ST10139225_K_Baholo_Part1\obj\Debug\netcoreapp2.1\ST10139225_K_Baholo_Part1.csproj.AssemblyReference.cache
+C:\Users\lab_services_student\source\repos\ST10139225_K_Baholo_Part1\ST10139225_K_Baholo_Part1\obj\Debug\netcoreapp2.1\ST10139225_K_Baholo_Part1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lab_services_student\source\repos\ST10139225_K_Baholo_Part1\ST10139225_K_Baholo_Part1\obj\Debug\netcoreapp2.1\ST10139225_K_Baholo_Part1.AssemblyInfoInputs.cache
+C:\Users\lab_services_student\source\repos\ST10139225_K_Baholo_Part1\ST10139225_K_Baholo_Part1\obj\Debug\netcoreapp2.1\ST10139225_K_Baholo_Part1.AssemblyInfo.cs
+C:\Users\lab_services_student\source\repos\ST10139225_K_Baholo_Part1\ST10139225_K_Baholo_Part1\obj\Debug\netcoreapp2.1\ST10139225_K_Baholo_Part1.csproj.CoreCompileInputs.cache

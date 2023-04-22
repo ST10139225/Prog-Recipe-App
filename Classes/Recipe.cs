@@ -10,14 +10,32 @@ namespace ST10139225_K_Baholo_Part1.Classes
     internal class Recipe
     {
         //To store all the steps
-        int Number_of_steps = 0;
+        String UserInput = "";
         List<Steps> List_of_Steps = new List<Steps>();
 
 
         private void Addsteps()
         {
+            Console.WriteLine("Please enter the number of steps:");
+            UserInput = Console.ReadLine();
+            int Number_of_steps = int.Parse(UserInput);
             string Instruction;
             for (int count = 0; count <= Number_of_steps; count++)
+            {
+                Console.WriteLine("Please enter step " + count + ": ");
+                Instruction = Console.ReadLine();
+                Steps instruction = new Steps(count, Instruction);
+                List_of_Steps.Add(instruction);
+            }
+        }
+
+        private void Addingredients()
+        {
+            Console.WriteLine("Please enter the number of ingredients:");
+            UserInput = Console.ReadLine();
+            int Number_of_ingredients = int.Parse(UserInput);
+            string Instruction;
+            for (int count = 0; count <= Number_of_ingredients; count++)
             {
                 Console.WriteLine("Please enter step " + count + ": ");
                 Instruction = Console.ReadLine();
