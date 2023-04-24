@@ -8,7 +8,17 @@ namespace ST10139225_K_Baholo_Part1.Classes
     {
         static void Main(string[] args)
         {
-            Ingredients i = new Ingredients();
+            List<Steps> list= new List<Steps>();    
+            for (int i = 1; i < 5; i++)
+            {
+                Steps s = new Steps(i);
+               list.Add(s);
+            }
+
+            foreach(Steps s in list)
+            {
+                Console.WriteLine(s.getStep());
+            }
         }
     }
 

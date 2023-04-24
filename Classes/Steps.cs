@@ -14,17 +14,18 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
         public Steps(int step_number)
             {
-            setDescription();
             setStep_number(step_number);
+
+            setDescription();
             }
 
         public void setDescription() //This is setter method for the description of the step.
         {
+            Console.WriteLine("Please enter the description for step: {0}", step_number);
+
             Console.ForegroundColor = ConsoleColor.White; //To change color to show invalid input.
 
             String UserInput = "";
-            Console.WriteLine("Please enter the description for step: {0}",setStep_number);
-
             UserInput = Console.ReadLine();
 
             if (UserInput != null && UserInput.Equals("") != true)
