@@ -16,8 +16,14 @@ namespace ST10139225_K_Baholo_Part1.Classes
         public Ingredients()
         {
             setName();
-            setQuantity();
-            setUnit_of_meausurement();      
+            try
+            {
+                setQuantity();
+            }catch(FormatException e)
+            {
+                Console.WriteLine("Please enter the quantity in numerical form: 1 or 1.25");
+            }
+            setUnit_of_meausurement();
             reset_quantity();
 
 
