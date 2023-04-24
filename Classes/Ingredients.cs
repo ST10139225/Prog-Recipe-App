@@ -8,27 +8,70 @@ namespace ST10139225_K_Baholo_Part1.Classes
 {
     internal class Ingredients
     {
-            private string Name_of_Ingredient;
-            private float Quanity_of_ingredient;
-            private string Unit_of_Measurement;
-            private float Scaled_quantity;
+            private string Name_of_Ingredient; //To store the name of an ingredient
+            private float Quanity_of_ingredient; //To store the quantity of an ingredient
+            private string Unit_of_Measurement;  //To store the unit of measurement of an ingredient
+        private float Scaled_quantity; //To store the scaled quantity of an ingredient
 
         public Ingredients()
         {
-            String UserInput = "";
+            setName();
+            setQuantity();
+            setUnit_of_meausurement();      
+            reset_quantity();
+
+
+
+
+        }
+
+        private void setName() //This method of setting the name of the ingredient. It has input validation.
+        {
+            String UserInput="";
             Console.WriteLine("Please enter the name of the ingredient:");
-            UserInput= Console.ReadLine();
-            Name_of_Ingredient = UserInput;
-            
-            Console.WriteLine("Please enter the quantity for "+Name_of_Ingredient+":");
+
             UserInput = Console.ReadLine();
-            Quanity_of_ingredient = float.Parse(UserInput);
+            if (UserInput != null)
+            {
+                Name_of_Ingredient = UserInput;
+            }
+            else
+            {
+                Console.WriteLine("Please enter a name of the ");
+                setName();
+            }
 
+        }
 
-            Console.WriteLine("Please enter the unit of measurement for the quantity of: " + Quanity_of_ingredient);
+        private void setQuantity() //This method is to set the quantity of the ingredient. It has input validation.
+        {
+            String UserInput = "";
+
+            Console.WriteLine("Please enter the quantity for " + Name_of_Ingredient + ":");
+            UserInput = Console.ReadLine();
+            if (UserInput != null)
+            {
+               
+                    Quanity_of_ingredient = float.Parse(UserInput);
+               
+
+            }
+            else
+            {
+                Console.WriteLine("Please enter the quantity for " + Name_of_Ingredient + ":");
+
+                setQuantity();
+            }
+
+        }
+
+        private void setUnit_of_meausurement()
+        {
+            String UserInput = "";
+            Console.WriteLine("Fill in the blank: "+Quanity_of_ingredient+" ________ of"+Name_of_Ingredient);
             UserInput = Console.ReadLine();
 
-            if (set_unit_of_measurement(UserInput) == true)
+            if (validate_unit_of_measurement(UserInput) == true)
             {
                 Unit_of_Measurement = UserInput;
             }
@@ -36,15 +79,10 @@ namespace ST10139225_K_Baholo_Part1.Classes
             {
                 Console.WriteLine("Please enter as unit of meaasurement: spoon or spoons, tea spoon or tea spoons, cup or cups, \n " +
                                   "g or grams, kg or kilograms, ml or milliliters, l or liter or liters");
+                setUnit_of_meausurement();
             }
 
-
-
-
-
         }
-
-
 
         public string PrintIngredient()
             {
@@ -59,7 +97,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
                 Scaled_quantity = Quanity_of_ingredient;
 
             }
-            public Boolean set_unit_of_measurement(string userinput)
+            public Boolean validate_unit_of_measurement(string userinput)
             {
                 /*
                  This method will be used to ensure that the user enters the correct unit of measurement.
@@ -85,19 +123,6 @@ namespace ST10139225_K_Baholo_Part1.Classes
                 CorrectInput = true;
 
             return CorrectInput;
-
-
-
-
-()
-
-
-
-
-
-
-
-
             }
         public void scale_up_ingredient(int Factor)
             {
