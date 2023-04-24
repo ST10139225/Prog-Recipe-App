@@ -10,10 +10,15 @@ namespace ST10139225_K_Baholo_Part1.Classes
     //This is a class for recipes. 
     internal class Recipe
     {
-        //To store all the steps
-        String UserInput = "";
-        Steps[] List_of_Steps;
-        Ingredients[] List_of_ingredients;
+        String Title = "";//To store the name of the recipe.
+
+        String UserInput = ""; //To store user input.
+
+        Steps[] List_of_Steps;         //To store all the steps.
+
+        Ingredients[] List_of_ingredients; //To store all the ingredients.
+
+        
 
 
         private void Addsteps()
@@ -72,21 +77,30 @@ namespace ST10139225_K_Baholo_Part1.Classes
             }
         }
 
-        public void printRecipe()
+        public void printRecipe() //This method will display a selected recipe.
         {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("{0}:", Title);
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Ingredients: ");
+            Console.ForegroundColor = ConsoleColor.White;
+
             int counter = 0;
-            foreach(Ingredients i in List_of_ingredients)
+            foreach(Ingredients ingredient in List_of_ingredients)
             {
                 counter++;
-                Console.WriteLine("{0}.) {1}.", counter, i.PrintIngredient());
+                Console.WriteLine("{0}.) {1}.", counter, ingredient.PrintIngredient());
             }
-            counter= 0;
+         
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Steps: ");
+            Console.ForegroundColor = ConsoleColor.White;
+
             foreach (Steps step in List_of_Steps)
-            {
-                counter++;
-                Console.WriteLine("{0}.) {1}.", counter, step.getStep());
+            { 
+                Console.WriteLine("{0}",step.getStep());
             }
         }
 
