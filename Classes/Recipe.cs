@@ -119,7 +119,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
             Console.WriteLine("\n \n \nIngredients: ");
             Console.ForegroundColor = ConsoleColor.White;
 
-            string line = String.Format("{0,-15} {1,-6} {2,11}", "Ingredient ", "Quanity", "Unit of Measurement");
+            string line = String.Format("{0,-15} {1,-15} {2,13}", "Ingredient ", "Quanity", "Unit of Measurement");
             Console.WriteLine(line);
 
             foreach (Ingredients ingredient in List_of_ingredients)
