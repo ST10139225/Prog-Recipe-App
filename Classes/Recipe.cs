@@ -18,7 +18,17 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
         Ingredients[] List_of_ingredients; //To store all the ingredients.
 
-        
+        public Recipe()
+        {
+            Console.WriteLine("Please enter a title for the recipe: ");
+
+            UserInput = Console.ReadLine();
+
+           
+            
+
+
+        }
 
 
         private void Addsteps()
