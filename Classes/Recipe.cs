@@ -13,7 +13,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
         //To store all the steps
         String UserInput = "";
         List<Steps> List_of_Steps = new List<Steps>();
-        List<Ingredients>List_of_ingredients= new List<Ingredients>();
+        Ingredients[] List_of_ingredients;
 
 
         private void Addsteps()
@@ -44,13 +44,29 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
         private void Addingredients()
         {
+            int Number_of_ingredients=0;
             Console.WriteLine("Please enter the number of ingredients:");
             UserInput = Console.ReadLine();
-            int Number_of_ingredients = int.Parse(UserInput);
-            for (int count = 0; count <= Number_of_ingredients; count++)
+            if (UserInput == null && UserInput.Equals("") == true)
+            {
+                Console.WriteLine("Please enter an integer value for the number of ingredients.");
+                Addingredients();
+            }
+            try
+            {
+                Number_of_ingredients = int.Parse(UserInput);
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine("Please enter an integer value, e.g. 23 for the number of steps.");
+                Addingredients();
+            }
+
+            List_of_ingredients = new Ingredients[Number_of_ingredients];
+            for (int index = 0; index <= Number_of_ingredients; index++)
             { 
                 Ingredients ingredient = new Ingredients();
-                List_of_ingredients.Add(ingredient);
+                List_of_ingredients[index]=ingredient;
             }
         }
 
