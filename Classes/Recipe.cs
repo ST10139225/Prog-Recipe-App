@@ -31,16 +31,20 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
         private void setTitle() //This is a setter method for the title of a recipe.
         {
-            Console.ForegroundColor= ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Please enter a title for the recipe: ");
             UserInput = Console.ReadLine();
 
-            if (UserInput == null && UserInput.Equals("") == true)
+            if (UserInput != null && UserInput.Equals("") != true)
             {
-                red_warningMessage("Please enter a title for the recipe.");
-                setTitle();
+                this.Title = UserInput;
+
             }
-            this.Title= UserInput;
+            else
+            { 
+            red_warningMessage("Please enter a title for the recipe.\n For example: cheesecake \n");
+            setTitle();
+        }
 
         }
 
