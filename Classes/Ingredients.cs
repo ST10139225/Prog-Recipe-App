@@ -150,36 +150,43 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
             return CorrectInput;
             }
-        public void scale_up_ingredient(int Factor)
+        public void scale_up_ingredient(int Factor) 
             {
-                Scaled_quantity = Quanity_of_ingredient * Factor;
-                if (Scaled_quantity >= 8 && Unit_of_Measurement.Equals("table spoon"))
+            /* This is the first out of the two methods responsible for changing unit of measurements accordingly when the recipe is
+            scaled. For example, our one tablespoon of sugar will become two tablespoons of sugar
+            if the factor is 2.
+            */
+            Scaled_quantity = Quanity_of_ingredient * Factor;
+                if (Scaled_quantity >= 16 && Unit_of_Measurement.Equals("table spoon")|| Unit_of_Measurement.Equals("table spoons"))
                 {
-                    Unit_of_Measurement = "Cup(s)";
+                    Unit_of_Measurement = "cups";
                 }
-                if (Scaled_quantity >= 3 && Unit_of_Measurement.Equals("tea spoon(s)"))
+                if (Scaled_quantity >= 3 && Unit_of_Measurement.Equals("tea spoon") || Unit_of_Measurement.Equals("tea spoons"))
                 {
-                    Unit_of_Measurement = "table spoon(s)";
+                    Unit_of_Measurement = "table spoons";
                 }
-                if (Scaled_quantity >= 1000 && Unit_of_Measurement.Equals("ml"))
+                if (Scaled_quantity >= 1000 && Unit_of_Measurement.Equals("ml") || Unit_of_Measurement.Equals("milliliters"))
                 {
-                    Unit_of_Measurement = "litre(s)";
+                    Unit_of_Measurement = "litres";
                 }
-                if (Scaled_quantity >= 1000 && Unit_of_Measurement.Equals("g"))
+                if (Scaled_quantity >= 1000 && Unit_of_Measurement.Equals("g") || Unit_of_Measurement.Equals("grams"))
                 {
-                    Unit_of_Measurement = "kilogram(s)";
+                    Unit_of_Measurement = "kilograms";
                 }
             }
             public void scale_down_ingredient(int Factor)
             {
+            //This is the second out of two methods responsible for changing the unit of measurement according to the scaled quantity.
                 Scaled_quantity = Quanity_of_ingredient % Factor;
-                if (Scaled_quantity < 1 && Unit_of_Measurement.Equals("Cup(s)"))
+            float value = 0; 
+                if (Scaled_quantity < 1 && Unit_of_Measurement.Equals("cup") || Unit_of_Measurement.Equals("cups"))
                 {
+
                     Unit_of_Measurement = "table spoon(s)";
                 }
-                if (Scaled_quantity < 3 && Unit_of_Measurement.Equals("table spoon(s)"))
+                if (Scaled_quantity < 1 && Unit_of_Measurement.Equals("table spoon") || Unit_of_Measurement.Equals("table spoons"))
                 {
-                    Unit_of_Measurement = "tea spoon(s)";
+                    Unit_of_Measurement = "tea spoons";
                 }
                 if (Scaled_quantity < 1000 && Unit_of_Measurement.Equals("litre(s)"))
                 {
