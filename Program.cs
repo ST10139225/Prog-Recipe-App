@@ -8,16 +8,16 @@ namespace ST10139225_K_Baholo_Part1.Classes
     {
         static void Main(string[] args)
         {
-            List<Steps> list= new List<Steps>();    
+            List<Recipe> list= new List<Recipe>();    
             for (int i = 1; i < 5; i++)
             {
-                Steps s = new Steps(i);
+                Recipe s = new Recipe();
                list.Add(s);
             }
 
-            foreach(Steps s in list)
+            foreach(Recipe s in list)
             {
-                Console.WriteLine(s.getStep());
+                s.printRecipe();
             }
         }
     }

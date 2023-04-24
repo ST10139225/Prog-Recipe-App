@@ -20,9 +20,8 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
         public Recipe()
         {
-            Console.WriteLine("Please enter a title for the recipe: ");
+            setTitle();
 
-            UserInput = Console.ReadLine();
 
            
             
@@ -30,6 +29,20 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
         }
 
+        private void setTitle() //This is a setter method for the title of a recipe.
+        {
+            Console.ForegroundColor= ConsoleColor.White;
+            Console.WriteLine("Please enter a title for the recipe: ");
+            UserInput = Console.ReadLine();
+
+            if (UserInput == null && UserInput.Equals("") == true)
+            {
+                red_warningMessage("Please enter a title for the recipe.");
+                setTitle();
+            }
+            this.Title= UserInput;
+
+        }
 
         private void Addsteps()
         {
@@ -38,7 +51,9 @@ namespace ST10139225_K_Baholo_Part1.Classes
             UserInput = Console.ReadLine();
             if (UserInput == null && UserInput.Equals("") == true)
             {
-                Console.WriteLine("Please enter an integer value for the number of steps.");
+                Console.ForegroundColor = ConsoleColor.Red;
+
+                red_warningMessage("Please enter an integer value for the number of steps.");
                 Addsteps();
             }
             try
@@ -47,7 +62,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
             }
             catch (FormatException e)
             {
-                Console.WriteLine("Please enter an integer value, e.g. 23 for the number of steps.");
+                red_warningMessage("Please enter an integer value, e.g. 23 for the number of steps.");
                 Addsteps();
             }
             List_of_Steps = new Steps[Number_of_steps];
@@ -66,7 +81,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
             UserInput = Console.ReadLine();
             if (UserInput == null && UserInput.Equals("") == true)
             {
-                Console.WriteLine("Please enter an integer value for the number of ingredients.");
+                red_warningMessage("Please enter an integer value for the number of ingredients.");
                 Addingredients();
             }
             try
@@ -75,7 +90,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
             }
             catch (FormatException e)
             {
-                Console.WriteLine("Please enter an integer value, e.g. 23 for the number of steps.");
+                red_warningMessage("Please enter an integer value, e.g. 23 for the number of steps.");
                 Addingredients();
             }
 
@@ -113,6 +128,16 @@ namespace ST10139225_K_Baholo_Part1.Classes
                 Console.WriteLine("{0}",step.getStep());
             }
         }
+
+        public void red_warningMessage(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.White;
+
+
+        }
+
 
     }
 }
