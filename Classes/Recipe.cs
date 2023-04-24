@@ -18,8 +18,28 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
         private void Addsteps()
         {
+            int Number_of_ingredients = 0;
             Console.WriteLine("Please enter the number of steps:");
-         
+            UserInput = Console.ReadLine();
+            if (UserInput == null && UserInput.Equals("") == true)
+            {
+                Console.WriteLine("Please enter an integer value for the number of steps.");
+                Addsteps();
+            }
+            try
+            {
+                Number_of_ingredients = int.Parse(UserInput);
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine("Please enter an integer value, e.g. 23 for the number of steps.");
+                Addsteps();
+            }
+            for (int count = 0; count <= Number_of_ingredients; count++)
+            {
+                Steps step = new Steps(count + 1);
+                List_of_Steps.Add(step);
+            }
         }
 
         private void Addingredients()
