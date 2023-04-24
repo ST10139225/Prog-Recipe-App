@@ -16,13 +16,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
         public Ingredients()
         {
             setName();
-            try
-            {
-                setQuantity();
-            }catch(FormatException e)
-            {
-                Console.WriteLine("Please enter the quantity in numerical form: 1 or 1.25");
-            }
+            setQuantity();
             setUnit_of_meausurement();
             reset_quantity();
 
@@ -33,48 +27,69 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
         private void setName() //This method of setting the name of the ingredient. It has input validation.
         {
-            String UserInput="";
+            Console.ForegroundColor = ConsoleColor.White; //To change color to show invalid input.
+
+            String UserInput ="";
             Console.WriteLine("Please enter the name of the ingredient:");
 
             UserInput = Console.ReadLine();
-            if (UserInput != null)
+            if (UserInput != null && UserInput.Equals("")!=true)
             {
                 Name_of_Ingredient = UserInput;
             }
             else
             {
-                Console.WriteLine("Please enter a name of the ");
+                Console.ForegroundColor = ConsoleColor.Red; //To change color to show invalid input.
+                Console.WriteLine("Not empty space please!!");
+       
                 setName();
+
+
             }
 
         }
 
         private void setQuantity() //This method is to set the quantity of the ingredient. It has input validation.
         {
+            Console.ForegroundColor = ConsoleColor.White; //To change color to show invalid input.
+
             String UserInput = "";
 
             Console.WriteLine("Please enter the quantity for " + Name_of_Ingredient + ":");
             UserInput = Console.ReadLine();
             if (UserInput != null)
             {
-               
+                try
+                {
                     Quanity_of_ingredient = float.Parse(UserInput);
-               
+                }
+                catch (FormatException e)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red; //To change color to show invalid input.
+
+                    Console.WriteLine("Please enter the quantity in numerical form: 1 or 1.25");
+                    setQuantity();
+                }
+
 
             }
             else
             {
-                Console.WriteLine("Please enter the quantity for " + Name_of_Ingredient + ":");
+                Console.ForegroundColor = ConsoleColor.Red; //To change color to show invalid input
 
+                Console.WriteLine("Please enter the quantity for " + Name_of_Ingredient + ":");
                 setQuantity();
+
             }
 
         }
 
         private void setUnit_of_meausurement()
         {
+            Console.ForegroundColor = ConsoleColor.White; //To change color to show invalid input.
+
             String UserInput = "";
-            Console.WriteLine("Fill in the blank: "+Quanity_of_ingredient+" ________ of"+Name_of_Ingredient);
+            Console.WriteLine("Fill in the blank: "+Quanity_of_ingredient+" ________ of "+Name_of_Ingredient);
             UserInput = Console.ReadLine();
 
             if (validate_unit_of_measurement(UserInput) == true)
@@ -83,9 +98,14 @@ namespace ST10139225_K_Baholo_Part1.Classes
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Red; //To change color to show invalid input.
+
+                
                 Console.WriteLine("Please enter as unit of meaasurement: spoon or spoons, tea spoon or tea spoons, cup or cups, \n " +
                                   "g or grams, kg or kilograms, ml or milliliters, l or liter or liters");
                 setUnit_of_meausurement();
+
+
             }
 
         }
@@ -133,7 +153,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
         public void scale_up_ingredient(int Factor)
             {
                 Scaled_quantity = Quanity_of_ingredient * Factor;
-                if (Scaled_quantity >= 8 && Unit_of_Measurement.Equals("table spoon(s)"))
+                if (Scaled_quantity >= 8 && Unit_of_Measurement.Equals("table spoon"))
                 {
                     Unit_of_Measurement = "Cup(s)";
                 }
