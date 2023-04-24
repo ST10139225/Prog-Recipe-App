@@ -110,11 +110,12 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
         }
 
-        public string PrintIngredient()
+        public void PrintIngredient()
             {
-                string IngredientString = "Name: " + Name_of_Ingredient + "\nQuantity: " + Quanity_of_ingredient + "\nMeasurment(Unit)" + Unit_of_Measurement;
+            string line = String.Format("{0,-15} {1,-15} {2,-13}", Name_of_Ingredient, Quanity_of_ingredient, Unit_of_Measurement);
+            Console.WriteLine(line);
 
-                return IngredientString;
+               
             }
 
 

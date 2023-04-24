@@ -9,7 +9,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
         static void Main(string[] args)
         {
             List<Recipe> list= new List<Recipe>();    
-            for (int i = 1; i < 5; i++)
+            for (int i = 0; i <1; i++)
             {
                 Recipe s = new Recipe();
                list.Add(s);

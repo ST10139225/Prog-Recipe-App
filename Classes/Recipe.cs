@@ -22,6 +22,9 @@ namespace ST10139225_K_Baholo_Part1.Classes
         {
             setTitle();
 
+            Addingredients();
+
+            Addsteps(); 
 
            
             
@@ -70,7 +73,8 @@ namespace ST10139225_K_Baholo_Part1.Classes
                 Addsteps();
             }
             List_of_Steps = new Steps[Number_of_steps];
-            for (int index = 0; index <= Number_of_steps; index++)
+            for (int index = 0; index <
+                Number_of_steps; index++)
             {
                 Steps step = new Steps(index + 1);
                 List_of_Steps[index] = step;    
@@ -99,7 +103,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
             }
 
             List_of_ingredients = new Ingredients[Number_of_ingredients];
-            for (int index = 0; index <= Number_of_ingredients; index++)
+            for (int index = 0; index < Number_of_ingredients; index++)
             { 
                 Ingredients ingredient = new Ingredients();
                 List_of_ingredients[index]=ingredient;
@@ -109,22 +113,24 @@ namespace ST10139225_K_Baholo_Part1.Classes
         public void printRecipe() //This method will display a selected recipe.
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("{0}:", Title);
+            Console.WriteLine("\n \n{0}:", Title);
 
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Ingredients: ");
+            Console.WriteLine("\n \n \nIngredients: ");
             Console.ForegroundColor = ConsoleColor.White;
 
-            int counter = 0;
-            foreach(Ingredients ingredient in List_of_ingredients)
+            string line = String.Format("{0,-15} {1,-6} {2,11}", "Ingredient ", "Quanity", "Unit of Measurement");
+            Console.WriteLine(line);
+
+            foreach (Ingredients ingredient in List_of_ingredients)
             {
-                counter++;
-                Console.WriteLine("{0}.) {1}.", counter, ingredient.PrintIngredient());
+               
+                 ingredient.PrintIngredient();
             }
          
 
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Steps: ");
+            Console.WriteLine("\n \nSteps: ");
             Console.ForegroundColor = ConsoleColor.White;
 
             foreach (Steps step in List_of_Steps)
@@ -133,7 +139,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
             }
         }
 
-        public void red_warningMessage(string message)
+        public void red_warningMessage(string message) //This method is to display warning messages in red.
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(message);
