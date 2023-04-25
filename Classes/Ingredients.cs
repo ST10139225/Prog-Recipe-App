@@ -216,9 +216,59 @@ namespace ST10139225_K_Baholo_Part1.Classes
         public void scale_down_ingredient(float Factor)
             {
             //This is the second out of two methods responsible for changing the unit of measurement according to the scaled quantity.
-                
-            float value;
-           
+
+            float value = 0;
+            if (Unit_of_Measurement.Equals("cup(s)"))
+            {
+
+                Scaled_quantity = Quanity_of_ingredient / Factor;
+
+                if (Scaled_quantity < 1)
+                {
+                    Console.WriteLine("Sq: " + Scaled_quantity);
+                    Unit_of_Measurement = "spoon(s)";
+                    value = Scaled_quantity * 16;
+                    Console.WriteLine("Value: " + value);
+
+                    Scaled_quantity = value;
+
+                }
+            }
+
+
+            if (Unit_of_Measurement.Equals("spoon(s)"))
+            {
+                Scaled_quantity = Quanity_of_ingredient / Factor;
+
+                if (Scaled_quantity < 1)
+                {
+                    Unit_of_Measurement = "tea spoon(s)";
+                    value = Scaled_quantity * 3;
+                    Scaled_quantity = value;
+                }
+            }
+            if (Scaled_quantity < 1 && Unit_of_Measurement.Equals("litre(s)"))
+            {
+                Scaled_quantity = Quanity_of_ingredient / Factor;
+
+                if (Scaled_quantity < 1)
+                {
+                    Unit_of_Measurement = "milliliters";
+                    value = Scaled_quantity * 1000;
+                    Scaled_quantity = value;
+                }
+            }
+            if (Unit_of_Measurement.Equals("kilogram(s)"))
+            {
+                Scaled_quantity = Quanity_of_ingredient / Factor;
+
+                if (Scaled_quantity < 1)
+                {
+                    Unit_of_Measurement = "grams";
+                    value = Scaled_quantity * 1000;
+                    Scaled_quantity = value;
+                }
+            }
             
 
             }

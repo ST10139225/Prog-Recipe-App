@@ -153,7 +153,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
         {
             float scale = 0; //This variable stores the factor of scale
 
-            Console.WriteLine("Do you wish to scale the recipe? \n\nType in yes or no");
+            Console.WriteLine("\n\nDo you wish to scale the recipe? \nType in yes or no");
             UserInput = Console.ReadLine();
 
             if (UserInput == null && UserInput.Equals("") == true)
@@ -169,8 +169,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
                 UserInput = Console.ReadLine();
             }
 
-            else
-                clearData();
+            
             if (UserInput == null && UserInput.Equals("") == true)
             {
                 red_warningMessage("Please enter a value ");
@@ -209,7 +208,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
             {
                 for (int i = 0; i < List_of_ingredients.Length; i++)
                 {
-                    List_of_ingredients[i].scale_up_ingredient(scale);
+                    List_of_ingredients[i].scale_down_ingredient(scale);
                 }
 
             }else
@@ -224,11 +223,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
         }
 
-        public void clearData()
-        {
-            Console.WriteLine("Clearing data...");
-
-        }
+        
 
 
     }
