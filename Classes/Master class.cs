@@ -23,10 +23,11 @@ namespace ST10139225_K_Baholo_Part1.Classes
             string userinput = "";
             int number_of_recipes = 0;
 
-
+            userinput= Console.ReadLine();
             if (string.IsNullOrEmpty(userinput))
             {
                 red_warningMessage("Please the number, e.g. 12, of the recipes you want. ");
+                start();
             }
             try
             {
@@ -34,19 +35,12 @@ namespace ST10139225_K_Baholo_Part1.Classes
             }catch(FormatException e)
             {
                 red_warningMessage("Please the number, e.g. 12, of the recipes you want. ");
+                start();
 
             }
 
-            for (int i = 0; i < number_of_recipes; i++)
-            {
-                Recipe recipe = new Recipe();
-                recipes[i] = recipe;
-            }
+           recipes= new Recipe[number_of_recipes];  
 
-            foreach (Recipe recipe in recipes)
-            {
-                recipe.printRecipe();
-            }
         }
 
         public void red_warningMessage(string message) //This method is to display warning messages in red.
