@@ -84,35 +84,10 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
         }
 
-        private void setUnit_of_meausurement()
-        {
-            Console.ForegroundColor = ConsoleColor.White; //To change color to show invalid input.
-
-            String UserInput = "";
-            Console.WriteLine("Fill in the blank: "+Quanity_of_ingredient+" ________ of "+Name_of_Ingredient);
-            UserInput = Console.ReadLine();
-
-            if (validate_unit_of_measurement(UserInput) == true)
-            {
-                Unit_of_Measurement = UserInput;
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Red; //To change color to show invalid input.
-
-                
-                Console.WriteLine("Please enter as unit of meaasurement: spoon or spoons, tea spoon or tea spoons, cup or cups, \n " +
-                                  "g or grams, kg or kilograms, ml or milliliters, l or liter or liters");
-                setUnit_of_meausurement();
-
-
-            }
-
-        }
 
         public void PrintIngredient()
             {
-            string line = String.Format("{0,-15} {1,-15} {2,-13}", Name_of_Ingredient, Quanity_of_ingredient, Unit_of_Measurement);
+            string line = String.Format("{0,-15} {1,-15} {2,-13}", Name_of_Ingredient, Scaled_quantity, Unit_of_Measurement);
             Console.WriteLine(line);
 
                
@@ -124,32 +99,61 @@ namespace ST10139225_K_Baholo_Part1.Classes
                 Scaled_quantity = Quanity_of_ingredient;
 
             }
-            public Boolean validate_unit_of_measurement(string userinput)
+            public void setUnit_of_meausurement()
             {
-                /*
-                 This method will be used to ensure that the user enters the correct unit of measurement.
-                 */
+            /*
+             This method will be used to ensure that the user enters the correct unit of measurement.
+             */
+            Console.ForegroundColor = ConsoleColor.White; //To change color to show invalid input.
 
-            bool CorrectInput= false;
+            String userinput = "";
+            Console.WriteLine("Fill in the blank: " + Quanity_of_ingredient + " ________ of " + Name_of_Ingredient);
+            userinput = Console.ReadLine();
+
+
 
             if ((String.Equals(userinput, "Spoon", StringComparison.OrdinalIgnoreCase)) ||
                 (String.Equals(userinput, "Spoons", StringComparison.OrdinalIgnoreCase)) ||
-                (String.Equals(userinput, "tea spoon", StringComparison.OrdinalIgnoreCase)) ||
+                (String.Equals(userinput, "tbs", StringComparison.OrdinalIgnoreCase)))//Shorten version of table spoon
+                Unit_of_Measurement = "spoon(s)";
+             else if(
                 (String.Equals(userinput, "tea spoons", StringComparison.OrdinalIgnoreCase)) ||
-                (String.Equals(userinput, "cup", StringComparison.OrdinalIgnoreCase)) ||
-                (String.Equals(userinput, "cups", StringComparison.OrdinalIgnoreCase)) ||
+                (String.Equals(userinput, "tsp", StringComparison.OrdinalIgnoreCase)))//Shorten version of tea spoon
+                Unit_of_Measurement = "tea spoon(s)";
+            else if ( 
+               (String.Equals(userinput, "cup", StringComparison.OrdinalIgnoreCase)) ||
+                (String.Equals(userinput, "cups", StringComparison.OrdinalIgnoreCase)))
+                Unit_of_Measurement = "cup(s)";
+            else if (
                 (String.Equals(userinput, "g", StringComparison.OrdinalIgnoreCase)) ||
-                (String.Equals(userinput, "grams", StringComparison.OrdinalIgnoreCase)) ||
+                (String.Equals(userinput, "grams", StringComparison.OrdinalIgnoreCase)))
+                Unit_of_Measurement = "grams";
+            else if (
                 (String.Equals(userinput, "kg", StringComparison.OrdinalIgnoreCase)) ||
-                (String.Equals(userinput, "kilograms", StringComparison.OrdinalIgnoreCase)) ||
+                (String.Equals(userinput, "kilograms", StringComparison.OrdinalIgnoreCase)))
+                Unit_of_Measurement = "kilogram(s)";
+            else if (
                 (String.Equals(userinput, "ml", StringComparison.OrdinalIgnoreCase)) ||
-                (String.Equals(userinput, "milliliters", StringComparison.OrdinalIgnoreCase)) ||
+                (String.Equals(userinput, "milliliters", StringComparison.OrdinalIgnoreCase)))
+                Unit_of_Measurement = "milliliters";
+            else if (
                 (String.Equals(userinput, "l", StringComparison.OrdinalIgnoreCase)) ||
                 (String.Equals(userinput, "liter", StringComparison.OrdinalIgnoreCase)) ||
                 (String.Equals(userinput, "liters", StringComparison.OrdinalIgnoreCase)))
-                CorrectInput = true;
+                Unit_of_Measurement = "liter(s)";
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red; //To change color to show invalid input.
 
-            return CorrectInput;
+
+                Console.WriteLine("Please enter as unit of meaasurement: spoons, tea spoon , cups, \n " +
+                                  "grams, kilograms, milliliters, liters");
+                setUnit_of_meausurement();
+
+
+            }
+
+            
             }
         public void scale_up_ingredient(float Factor) 
             {
@@ -157,48 +161,71 @@ namespace ST10139225_K_Baholo_Part1.Classes
             scaled. For example, our one tablespoon of sugar will become two tablespoons of sugar
             if the factor is 2.
             */
+            float value = 0; //This value will be used for conversion. e.g. 16 tbs = 1 cup.
             Scaled_quantity = Quanity_of_ingredient * Factor;
-                if (Scaled_quantity >= 16 && Unit_of_Measurement.Equals("table spoon")|| Unit_of_Measurement.Equals("table spoons"))
+
+            Console.WriteLine("Scaled q " + Scaled_quantity);
+                if (Scaled_quantity >= 16 && Unit_of_Measurement.Equals("spoon(s)"))
                 {
-                    Unit_of_Measurement = "cups";
-                }
-                if (Scaled_quantity >= 3 && Unit_of_Measurement.Equals("tea spoon") || Unit_of_Measurement.Equals("tea spoons"))
-                {
-                    Unit_of_Measurement = "table spoons";
-                }
-                if (Scaled_quantity >= 1000 && Unit_of_Measurement.Equals("ml") || Unit_of_Measurement.Equals("milliliters"))
-                {
-                    Unit_of_Measurement = "litres";
-                }
-                if (Scaled_quantity >= 1000 && Unit_of_Measurement.Equals("g") || Unit_of_Measurement.Equals("grams"))
-                {
-                    Unit_of_Measurement = "kilograms";
-                }
+                    Unit_of_Measurement = "cup(s)";
+                
             }
-            public void scale_down_ingredient(float Factor)
+            convert_Quantity((1 / 16));
+            if (Scaled_quantity >= 3 && Unit_of_Measurement.Equals("tea spoon(s)"))
+                {
+                    Unit_of_Measurement = "spoon(s)";
+                value = Scaled_quantity * (1 / 3);
+            }
+                if (Scaled_quantity >= 1000 && Unit_of_Measurement.Equals("milliliters"))
+                {
+                Unit_of_Measurement = "litre(s)";
+                value = Scaled_quantity * (1 / 1000);
+            }
+                if (Scaled_quantity >= 1000 && Unit_of_Measurement.Equals("grams"))
+                {
+                    Unit_of_Measurement = "kilogram(s)";
+
+                value = Scaled_quantity * (1 / 1000);
+            }
+            Console.WriteLine("Scaled after conversion" + value);
+
+
+        }
+        public void scale_down_ingredient(float Factor)
             {
             //This is the second out of two methods responsible for changing the unit of measurement according to the scaled quantity.
                 Scaled_quantity = Quanity_of_ingredient % Factor;
-            float value = 0; 
-                if (Scaled_quantity < 1 && Unit_of_Measurement.Equals("cup") || Unit_of_Measurement.Equals("cups"))
+            float value; 
+                if (Scaled_quantity < 1 && Unit_of_Measurement.Equals("cup(s)"))
                 {
 
-                    Unit_of_Measurement = "table spoon(s)";
+                    Unit_of_Measurement = "spoon(s)";
+                    value = 16;
+                Scaled_quantity = Scaled_quantity * value;
+
                 }
-                if (Scaled_quantity < 1 && Unit_of_Measurement.Equals("table spoon") || Unit_of_Measurement.Equals("table spoons"))
+                if (Scaled_quantity < 1 && Unit_of_Measurement.Equals("spoon(s)"))
                 {
-                    Unit_of_Measurement = "tea spoons";
-                }
-                if (Scaled_quantity < 1000 && Unit_of_Measurement.Equals("litre(s)"))
+                    Unit_of_Measurement = "tea spoon(s)";
+                value = 3;
+                Scaled_quantity = Scaled_quantity * value;
+            }
+                if (Scaled_quantity < 1 && Unit_of_Measurement.Equals("litre(s)"))
                 {
                     Unit_of_Measurement = "ml";
-                }
+                value = 1000;
+                Scaled_quantity = Scaled_quantity * value;
+            }
                 if (Scaled_quantity < 1000 && Unit_of_Measurement.Equals("kilogram(s)"))
                 {
                     Unit_of_Measurement = "g";
                 }
 
             }
+        private void convert_Quantity(float value)
+        {
+            Scaled_quantity *= value;
+        }
         }
         
 }

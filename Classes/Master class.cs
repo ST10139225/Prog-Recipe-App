@@ -19,6 +19,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
             start();
            Recipe s =  getRecipe(0);
             s.printRecipe();
+            s.scale_recipe();
 
 
 
@@ -37,19 +38,22 @@ namespace ST10139225_K_Baholo_Part1.Classes
             }
             try
             {
-                number_of_recipes= int.Parse(userinput);    
-            }catch(FormatException e)
+                number_of_recipes= int.Parse(userinput);
+                recipes = new Recipe[number_of_recipes];
+                for (int i = 0; i < number_of_recipes; i++)
+                {
+                    recipes[i] = new Recipe();
+                }
+            }
+            catch(FormatException e)
             {
                 red_warningMessage("Please the number, e.g. 12, of the recipes you want. ");
                 start();
 
             }
 
-           recipes= new Recipe[number_of_recipes];  
-            for(int i =0; i<number_of_recipes; i++)
-            {
-                recipes[i]= new Recipe();   
-            }
+           
+
         }
 
         public Recipe getRecipe(int index)// This method gets a recipe from the array.

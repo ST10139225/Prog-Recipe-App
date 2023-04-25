@@ -188,7 +188,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
             Console.WriteLine("Do you wish to scale up or scale down the recipe? \n\nType in u for up or d for down");
             UserInput = Console.ReadLine();
 
-            if (UserInput == null && UserInput.Equals("") == true)
+            if (UserInput == null || UserInput.Equals("") == true )
             {
                 Console.ForegroundColor = ConsoleColor.Red;
 
@@ -196,6 +196,8 @@ namespace ST10139225_K_Baholo_Part1.Classes
                 UserInput = Console.ReadLine();
 
             }
+
+            //This section of the method takes in the decision to scale up or down.
             if (UserInput.Equals("u"))
             {
                for(int i =0; i<List_of_ingredients.Length; i++)
@@ -203,8 +205,20 @@ namespace ST10139225_K_Baholo_Part1.Classes
                     List_of_ingredients[i].scale_up_ingredient(scale);
                 } 
                
+            }else if (UserInput.Equals("d"))
+            {
+                for (int i = 0; i < List_of_ingredients.Length; i++)
+                {
+                    List_of_ingredients[i].scale_up_ingredient(scale);
+                }
+
+            }else
+            {
+                red_warningMessage("Type in u for up or d for down");
+                UserInput = Console.ReadLine();
             }
 
+            printRecipe();
 
 
 
