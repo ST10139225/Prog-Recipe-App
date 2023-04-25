@@ -162,70 +162,67 @@ namespace ST10139225_K_Baholo_Part1.Classes
             if the factor is 2.
             */
             float value = 0; //This value will be used for conversion. e.g. 16 tbs = 1 cup.
-            Scaled_quantity = Quanity_of_ingredient * Factor;
 
-            Console.WriteLine("Scaled q " + Scaled_quantity);
-                if (Scaled_quantity >= 16 && Unit_of_Measurement.Equals("spoon(s)"))
+            if (Unit_of_Measurement.Equals("spoon(s)"))
+            {
+                Scaled_quantity = Quanity_of_ingredient * Factor;
+
+                if (Scaled_quantity >= 16)
                 {
                     Unit_of_Measurement = "cup(s)";
-                
+                    value = Scaled_quantity/16;
+                    Scaled_quantity = value;
+
+
+
+                }
             }
-            convert_Quantity((1 / 16));
-            if (Scaled_quantity >= 3 && Unit_of_Measurement.Equals("tea spoon(s)"))
+            else if (Unit_of_Measurement.Equals("tea spoon(s)"))
+            {
+                Scaled_quantity = Quanity_of_ingredient * Factor;
+
+                if (Scaled_quantity >= 3)
                 {
                     Unit_of_Measurement = "spoon(s)";
-                value = Scaled_quantity * (1 / 3);
+                    value = Scaled_quantity / 3;
+                    Scaled_quantity = value;
+                }
             }
-                if (Scaled_quantity >= 1000 && Unit_of_Measurement.Equals("milliliters"))
+            else if (Unit_of_Measurement.Equals("milliliters"))
+            {
+                Scaled_quantity = Quanity_of_ingredient * Factor;
+
+                if (Scaled_quantity >= 1000)
                 {
-                Unit_of_Measurement = "litre(s)";
-                value = Scaled_quantity * (1 / 1000);
+                    Unit_of_Measurement = "liter(s)";
+                    value = Scaled_quantity / 1000;
+                    Scaled_quantity = value;
+                }
             }
-                if (Scaled_quantity >= 1000 && Unit_of_Measurement.Equals("grams"))
+            else if (Scaled_quantity >= 1000 && Unit_of_Measurement.Equals("grams"))
+            {
+                Scaled_quantity = Quanity_of_ingredient * Factor;
+
+                if (Scaled_quantity >= 1000)
                 {
                     Unit_of_Measurement = "kilogram(s)";
-
-                value = Scaled_quantity * (1 / 1000);
+                    value = Scaled_quantity / 1000;
+                    Scaled_quantity = value;
+                }
             }
-            Console.WriteLine("Scaled after conversion" + value);
 
 
         }
         public void scale_down_ingredient(float Factor)
             {
             //This is the second out of two methods responsible for changing the unit of measurement according to the scaled quantity.
-                Scaled_quantity = Quanity_of_ingredient % Factor;
-            float value; 
-                if (Scaled_quantity < 1 && Unit_of_Measurement.Equals("cup(s)"))
-                {
-
-                    Unit_of_Measurement = "spoon(s)";
-                    value = 16;
-                Scaled_quantity = Scaled_quantity * value;
-
-                }
-                if (Scaled_quantity < 1 && Unit_of_Measurement.Equals("spoon(s)"))
-                {
-                    Unit_of_Measurement = "tea spoon(s)";
-                value = 3;
-                Scaled_quantity = Scaled_quantity * value;
-            }
-                if (Scaled_quantity < 1 && Unit_of_Measurement.Equals("litre(s)"))
-                {
-                    Unit_of_Measurement = "ml";
-                value = 1000;
-                Scaled_quantity = Scaled_quantity * value;
-            }
-                if (Scaled_quantity < 1000 && Unit_of_Measurement.Equals("kilogram(s)"))
-                {
-                    Unit_of_Measurement = "g";
-                }
+                
+            float value;
+           
+            
 
             }
-        private void convert_Quantity(float value)
-        {
-            Scaled_quantity *= value;
-        }
+       
         }
         
 }
