@@ -8,11 +8,18 @@ namespace ST10139225_K_Baholo_Part1.Classes
 {
     internal class Master_class //This class will act as the access point to create, edit, and delete and store recipes.
     {
+        string userinput = "";
+        int number_of_recipes = 0;
+
         Recipe[] recipes;
+
 
         public Master_class()
         {
             start();
+           Recipe s =  getRecipe(0);
+            s.printRecipe();
+
 
 
         }
@@ -20,8 +27,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
         public void start()
         {
             Console.WriteLine("Pleases enter the number of recipes you would like to enter");
-            string userinput = "";
-            int number_of_recipes = 0;
+           
 
             userinput= Console.ReadLine();
             if (string.IsNullOrEmpty(userinput))
@@ -40,7 +46,23 @@ namespace ST10139225_K_Baholo_Part1.Classes
             }
 
            recipes= new Recipe[number_of_recipes];  
+            for(int i =0; i<number_of_recipes; i++)
+            {
+                recipes[i]= new Recipe();   
+            }
+        }
 
+        public Recipe getRecipe(int index)// This method gets a recipe from the array.
+        {
+            return recipes[index];
+        }
+
+        public void DeleteData()
+        {
+           
+            for(int i =0; i<number_of_recipes;i++) {
+                recipes[i] = null;
+            }
         }
 
         public void red_warningMessage(string message) //This method is to display warning messages in red.

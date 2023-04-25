@@ -151,7 +151,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
             return CorrectInput;
             }
-        public void scale_up_ingredient(int Factor) 
+        public void scale_up_ingredient(float Factor) 
             {
             /* This is the first out of the two methods responsible for changing unit of measurements accordingly when the recipe is
             scaled. For example, our one tablespoon of sugar will become two tablespoons of sugar
@@ -175,7 +175,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
                     Unit_of_Measurement = "kilograms";
                 }
             }
-            public void scale_down_ingredient(int Factor)
+            public void scale_down_ingredient(float Factor)
             {
             //This is the second out of two methods responsible for changing the unit of measurement according to the scaled quantity.
                 Scaled_quantity = Quanity_of_ingredient % Factor;

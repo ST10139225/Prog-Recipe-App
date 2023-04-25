@@ -154,6 +154,8 @@ namespace ST10139225_K_Baholo_Part1.Classes
             float scale = 0; //This variable stores the factor of scale
 
             Console.WriteLine("Do you wish to scale the recipe? \n\nType in yes or no");
+            UserInput = Console.ReadLine();
+
             if (UserInput == null && UserInput.Equals("") == true)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -162,27 +164,50 @@ namespace ST10139225_K_Baholo_Part1.Classes
                 scale_recipe();
             }
             if (UserInput.Equals("yes"))
+            {
                 Console.WriteLine("Enter the factor of scale to apply, e.g. 0.5");
+                UserInput = Console.ReadLine();
+            }
+
             else
                 clearData();
             if (UserInput == null && UserInput.Equals("") == true)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-
                 red_warningMessage("Please enter a value ");
                 scale_recipe();
             }
+            try
+            {
+                scale = float.Parse(UserInput);
+            }catch(FormatException e)
+            {
+                red_warningMessage("Please enter a value 2.5, 0.5 ");
+                scale_recipe();
+            }
 
+            Console.WriteLine("Do you wish to scale up or scale down the recipe? \n\nType in u for up or d for down");
+            UserInput = Console.ReadLine();
 
-
-            Console.WriteLine("Do you wish to scale the recipe? \n\nType in yes or no");
             if (UserInput == null && UserInput.Equals("") == true)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
 
-                red_warningMessage("Please enter an yes or no. ");
-                scale_recipe();
+                red_warningMessage("Type in u for up or d for down");
+                UserInput = Console.ReadLine();
+
             }
+            if (UserInput.Equals("u"))
+            {
+               for(int i =0; i<List_of_ingredients.Length; i++)
+                {
+                    List_of_ingredients[i].scale_up_ingredient(scale);
+                } 
+               
+            }
+
+
+
+
         }
 
         public void clearData()
