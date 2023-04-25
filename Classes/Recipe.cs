@@ -116,7 +116,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
             Console.WriteLine("\n \n{0}:", Title);
 
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("\n \n \nIngredients: ");
+            Console.WriteLine("\n Ingredients: ");
             Console.ForegroundColor = ConsoleColor.White;
 
             string line = String.Format("{0,-15} {1,-15} {2,13}", "Ingredient ", "Quanity", "Unit of Measurement");
@@ -144,6 +144,44 @@ namespace ST10139225_K_Baholo_Part1.Classes
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(message);
             Console.ForegroundColor = ConsoleColor.White;
+
+
+        }
+
+        public void scale_recipe()
+        {
+            float scale = 0; //This variable stores the factor of scale
+
+            Console.WriteLine("Do you wish to scale the recipe? \n\nType in yes or no");
+            if (UserInput == null && UserInput.Equals("") == true)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+
+                red_warningMessage("Please enter an yes or no. ");
+                scale_recipe();
+            }
+            if (UserInput.Equals("yes"))
+                Console.WriteLine("Enter the factor of scale to apply, e.g. 0.5");
+            else
+                clearData();
+            if (UserInput == null && UserInput.Equals("") == true)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+
+                red_warningMessage("Please enter a value ");
+                scale_recipe();
+            }
+
+
+
+            Console.WriteLine("Do you wish to scale the recipe? \n\nType in yes or no");
+            if (UserInput == null && UserInput.Equals("") == true)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+
+                red_warningMessage("Please enter an yes or no. ");
+                scale_recipe();
+            }
 
 
         }
