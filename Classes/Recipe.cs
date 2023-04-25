@@ -34,7 +34,9 @@ namespace ST10139225_K_Baholo_Part1.Classes
             printRecipe();
 
             scale_recipe();
-            
+
+            resetQuantities();
+
             stop();
             
 
@@ -205,6 +207,8 @@ namespace ST10139225_K_Baholo_Part1.Classes
                 {
                     List_of_ingredients[i].scale_up_ingredient(scale);
                 }
+                printRecipe();
+
 
             }
             else if (UserInput.Equals("d"))
@@ -214,44 +218,39 @@ namespace ST10139225_K_Baholo_Part1.Classes
                     List_of_ingredients[i].scale_down_ingredient(scale);
                 }
 
+                printRecipe();
+
             }
             else
             {
                 red_warningMessage("Type in u for up or d for down");
                 selectTypeofScale(scale);
-
-
             }
 
-            printRecipe();
+        }
 
-            Console.WriteLine("Do you wish to return to the original scale of the {0} recipe", Title) ;
-            red_warningMessage("Type in yes or anything else to progress. ");
+       public void resetQuantities()
+        {
+            Console.WriteLine("\n\nDo you wish to return to the original scale of the {0} recipe", Title);
+            red_warningMessage("Type in yes the original values, or anything else to progress. ");
 
             UserInput = Console.ReadLine();
 
             //This section of the method takes in the decision to scale up or down.
             if (UserInput.Equals("yes"))
             {
-                resetQuantities();
-            }else
-            { 
+                for (int i = 0; i < List_of_ingredients.Length; i++)
+                {
+                    List_of_ingredients[i].reset_quantity();
+                }
+                Console.WriteLine("This is the recipe with original quantities.");
+                printRecipe();
+            }
+            else
+            {
                 Console.WriteLine("\n\n\n");
             }
-
-
-
-
-
-        }
-
-       public void resetQuantities()
-        {
-            for (int i = 0; i < List_of_ingredients.Length; i++)
-            {
-                List_of_ingredients[i].reset_quantity();
-            }
-            Console.WriteLine("This is the recipe with original quantities.");
+            
         }
 
         public Boolean stop() //This method will allow user stop entering a recipe.

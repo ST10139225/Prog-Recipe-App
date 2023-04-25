@@ -226,9 +226,8 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
                 if (Scaled_quantity < 1)
                 {
-                    Console.WriteLine("Sq: " + Scaled_quantity);
+
                     value = Scaled_quantity * 16;
-                    Console.WriteLine("Value: " + value);
                     Scaled_quantity = value;
                     Unit_of_Measurement = "spoon(s)";
 
