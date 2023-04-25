@@ -62,7 +62,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
                 {
                     Quanity_of_ingredient = float.Parse(UserInput);
                 }
-                catch (FormatException e)
+                catch (FormatException)
                 {
                     Console.ForegroundColor = ConsoleColor.Red; //To change color to show invalid input.
 
@@ -95,11 +95,17 @@ namespace ST10139225_K_Baholo_Part1.Classes
             }
 
 
-            public void reset_quantity()
+            public void reset_quantity_after_up_scale(float factor) //This method is used return original values after scaling up.
             {
-            Scaled_quantity = Quanity_of_ingredient;
+            scale_down_ingredient(factor);
 
             }
+            public void reset_quantity_after_down_scale(float factor) //This method is used return original values after scaling down.
+        {
+            scale_up_ingredient(factor);
+
+            }
+
             public void setUnit_of_meausurement()
             {
             /*
@@ -200,7 +206,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
                     Scaled_quantity = value;
                 }
             }
-            else if (Scaled_quantity >= 1000 && Unit_of_Measurement.Equals("grams"))
+            else if ( Unit_of_Measurement.Equals("grams"))
             {
                 Scaled_quantity = Quanity_of_ingredient * Factor;
 

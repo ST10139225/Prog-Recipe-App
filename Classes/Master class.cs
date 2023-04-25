@@ -44,7 +44,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
                 populateArray(number_of_recipes);
                 
             }
-            catch(FormatException e)
+            catch(FormatException )
             {
                 red_warningMessage("Please the number, e.g. 12, of the recipes you want. ");
                 start();

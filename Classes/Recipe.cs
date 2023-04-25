@@ -78,7 +78,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
             {
                  Number_of_steps = int.Parse(UserInput);
             }
-            catch (FormatException e)
+            catch (FormatException )
             {
                 red_warningMessage("Please enter an integer value, e.g. 23 for the number of steps.");
                 Addsteps();
@@ -107,7 +107,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
             {
                 Number_of_ingredients = int.Parse(UserInput);
             }
-            catch (FormatException e)
+            catch (FormatException )
             {
                 red_warningMessage("Please enter an integer value, e.g. 23 for the number of steps.");
                 Addingredients();
@@ -161,7 +161,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
         public void scale_recipe() ///This method is responsible for scaling the recipe.
         {
-
+            var value = 0F;
             Console.WriteLine("\n\nDo you wish to scale the recipe? \nType in yes or no");
             UserInput = Console.ReadLine();
 
@@ -172,14 +172,15 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
                 try
                 {
-                    this.scale = float.Parse(UserInput);
+                    value = float.Parse(UserInput);
                 }
-                catch (FormatException e)
+                catch (FormatException )
                 {
                     red_warningMessage("Please enter a value 2.5, 0.5 ");
                     scale_recipe();
                 }
-                selectTypeofScale(scale);     
+                scale = value;
+                selectTypeofScale();     
             }
             else if (UserInput.Equals("no"))
             {
@@ -195,7 +196,8 @@ namespace ST10139225_K_Baholo_Part1.Classes
             }
         }
 
-        private void selectTypeofScale(float scale) //This method is to select whether the recipe should be scaled up or down.
+        String scaleType = ""; //To store which type of scaling was choosing.
+        private void selectTypeofScale() //This method is to select whether the recipe should be scaled up or down.
         {
             Console.WriteLine("Do you wish to scale up or scale down the recipe? \n\nType in u for up or d for down");
             UserInput = Console.ReadLine();
@@ -203,30 +205,40 @@ namespace ST10139225_K_Baholo_Part1.Classes
             //This section of the method takes in the decision to scale up or down.
             if (UserInput.Equals("u"))
             {
-                for (int i = 0; i < List_of_ingredients.Length; i++)
-                {
-                    List_of_ingredients[i].scale_up_ingredient(scale);
-                }
+                scale_up_ingredients(scale);
                 printRecipe();
+                scaleType= "u";
 
 
             }
             else if (UserInput.Equals("d"))
             {
-                for (int i = 0; i < List_of_ingredients.Length; i++)
-                {
-                    List_of_ingredients[i].scale_down_ingredient(scale);
-                }
+                scale_down_ingredients(scale);
 
                 printRecipe();
+                scaleType= "d"; 
 
             }
             else
             {
                 red_warningMessage("Type in u for up or d for down");
-                selectTypeofScale(scale);
+                selectTypeofScale();
             }
 
+        }
+
+        public void scale_up_ingredients(float scale)
+        {
+            for (int i = 0; i < List_of_ingredients.Length; i++)
+            {
+                List_of_ingredients[i].scale_up_ingredient(scale);
+            }
+        }public void scale_down_ingredients(float scale)
+        {
+            for (int i = 0; i < List_of_ingredients.Length; i++)
+            {
+                List_of_ingredients[i].scale_down_ingredient(scale);
+            }
         }
 
        public void resetQuantities()
@@ -239,9 +251,18 @@ namespace ST10139225_K_Baholo_Part1.Classes
             //This section of the method takes in the decision to scale up or down.
             if (UserInput.Equals("yes"))
             {
-                for (int i = 0; i < List_of_ingredients.Length; i++)
+                if (scaleType.Equals("u"))
                 {
-                    List_of_ingredients[i].reset_quantity();
+                    for (int i = 0; i < List_of_ingredients.Length; i++)
+                    {
+                        List_of_ingredients[i].reset_quantity_after_down_scale(scale);
+                    }
+                }else if (scaleType.Equals("d"))
+                {
+                    for (int i = 0; i < List_of_ingredients.Length; i++)
+                    {
+                        List_of_ingredients[i].reset_quantity_after_up_scale(scale);
+                    }
                 }
                 Console.WriteLine("This is the recipe with original quantities.");
                 printRecipe();
