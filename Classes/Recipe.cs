@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -182,7 +183,11 @@ namespace ST10139225_K_Baholo_Part1.Classes
                 red_warningMessage("Please enter an yes or no. ");
                 scale_recipe();
             }
+        }
 
+        public void clearData()
+        {
+            Console.WriteLine("Clearing data...");
 
         }
 
