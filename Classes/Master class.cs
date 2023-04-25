@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ST10139225_K_Baholo_Part1.Classes
 {
@@ -17,15 +20,14 @@ namespace ST10139225_K_Baholo_Part1.Classes
         public Master_class()
         {
             start();
-           Recipe s =  getRecipe(0);
-            s.printRecipe();
-            s.scale_recipe();
+            
+            DeleteData();
 
 
 
         }
 
-        public void start()
+        public void start()// This method starts the application.
         {
             Console.WriteLine("Pleases enter the number of recipes you would like to enter");
            
@@ -37,13 +39,10 @@ namespace ST10139225_K_Baholo_Part1.Classes
                 start();
             }
             try
-            {
+            {  
                 number_of_recipes= int.Parse(userinput);
-                recipes = new Recipe[number_of_recipes];
-                for (int i = 0; i < number_of_recipes; i++)
-                {
-                    recipes[i] = new Recipe();
-                }
+                populateArray(number_of_recipes);
+                
             }
             catch(FormatException e)
             {
@@ -61,13 +60,48 @@ namespace ST10139225_K_Baholo_Part1.Classes
             return recipes[index];
         }
 
+        public void populateArray(int number)// This method adds populates the recipes array.
+        {
+            recipes = new Recipe[number];
+            for (int i = 0; i < number; i++)
+            {
+                recipes[i] = new Recipe();
+            }
+        }
+
+
+
         public void DeleteData()
         {
            
+            Console.WriteLine("Do you want to delete all data? \nEnter yes to proceed:");
+            userinput = Console.ReadLine();
+            if (string.IsNullOrEmpty(userinput)||userinput.Equals("yes")==false)
+            {
+                red_warningMessage("Please the either yes");
+                DeleteData(); 
+            }
+            
+
             for(int i =0; i<number_of_recipes;i++) {
                 recipes[i] = null;
+
             }
+
+            red_warningMessage("\n\nThere are no recipes to display.");
+            Console.WriteLine(" \nEnter 'new' to enter a recipe, anything else will exit the program.");
+            userinput = Console.ReadLine();
+            if (string.IsNullOrEmpty(userinput) || userinput.Equals("new") == false)
+            {
+                System.Environment.Exit(0); //To exit the recipe program.
+            }
+            else
+                Console.Clear();
+                start();
+            
         }
+
+        
 
         public void red_warningMessage(string message) //This method is to display warning messages in red.
         {

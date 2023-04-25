@@ -5,6 +5,7 @@ using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace ST10139225_K_Baholo_Part1.Classes
 {
@@ -19,15 +20,22 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
         Ingredients[] List_of_ingredients; //To store all the ingredients.
 
+        float scale = 0; //This variable stores the factor of scale.
+
+
         public Recipe()
         {
             setTitle();
 
             Addingredients();
 
-            Addsteps(); 
+            Addsteps();
 
-           
+            printRecipe();
+
+            scale_recipe();
+            
+            stop();
             
 
 
@@ -117,10 +125,10 @@ namespace ST10139225_K_Baholo_Part1.Classes
             Console.WriteLine("\n \n{0}:", Title);
 
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("\n Ingredients: ");
+            Console.WriteLine("\nIngredients: ");
             Console.ForegroundColor = ConsoleColor.White;
 
-            string line = String.Format("{0,-15} {1,-15} {2,13}", "Ingredient ", "Quanity", "Unit of Measurement");
+            string line = String.Format("{0,-15} {1,-15} {2,13}", "Ingredient ", "Quantity", "Unit of Measurement");
             Console.WriteLine(line);
 
             foreach (Ingredients ingredient in List_of_ingredients)
@@ -149,78 +157,106 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
         }
 
-        public void scale_recipe()
+        public void scale_recipe() ///This method is responsible for scaling the recipe.
         {
-            float scale = 0; //This variable stores the factor of scale
 
             Console.WriteLine("\n\nDo you wish to scale the recipe? \nType in yes or no");
             UserInput = Console.ReadLine();
 
-            if (UserInput == null && UserInput.Equals("") == true)
+            if (UserInput.Equals("yes"))
+            {
+                Console.WriteLine("Enter the factor of scale to apply, e.g. 0.5");
+                UserInput = Console.ReadLine();
+
+                try
+                {
+                    this.scale = float.Parse(UserInput);
+                }
+                catch (FormatException e)
+                {
+                    red_warningMessage("Please enter a value 2.5, 0.5 ");
+                    scale_recipe();
+                }
+                selectTypeofScale(scale);     
+            }
+            else if (UserInput.Equals("no"))
+            {
+                Console.WriteLine("Final stage...");
+
+            }
+            else if (UserInput.Equals("yes") == false && UserInput.Equals("no") == false)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
 
                 red_warningMessage("Please enter an yes or no. ");
                 scale_recipe();
             }
-            if (UserInput.Equals("yes"))
-            {
-                Console.WriteLine("Enter the factor of scale to apply, e.g. 0.5");
-                UserInput = Console.ReadLine();
-            }
+        }
 
-            
-            if (UserInput == null && UserInput.Equals("") == true)
-            {
-                red_warningMessage("Please enter a value ");
-                scale_recipe();
-            }
-            try
-            {
-                scale = float.Parse(UserInput);
-            }catch(FormatException e)
-            {
-                red_warningMessage("Please enter a value 2.5, 0.5 ");
-                scale_recipe();
-            }
-
+        private void selectTypeofScale(float scale) //This method is to select whether the recipe should be scaled up or down.
+        {
             Console.WriteLine("Do you wish to scale up or scale down the recipe? \n\nType in u for up or d for down");
             UserInput = Console.ReadLine();
-
-            if (UserInput == null || UserInput.Equals("") == true )
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-
-                red_warningMessage("Type in u for up or d for down");
-                UserInput = Console.ReadLine();
-
-            }
 
             //This section of the method takes in the decision to scale up or down.
             if (UserInput.Equals("u"))
             {
-               for(int i =0; i<List_of_ingredients.Length; i++)
+                for (int i = 0; i < List_of_ingredients.Length; i++)
                 {
                     List_of_ingredients[i].scale_up_ingredient(scale);
-                } 
-               
-            }else if (UserInput.Equals("d"))
+                }
+
+            }
+            else if (UserInput.Equals("d"))
             {
                 for (int i = 0; i < List_of_ingredients.Length; i++)
                 {
                     List_of_ingredients[i].scale_down_ingredient(scale);
                 }
 
-            }else
+            }
+            else
             {
                 red_warningMessage("Type in u for up or d for down");
-                UserInput = Console.ReadLine();
+                selectTypeofScale(scale);
+
+
             }
 
             printRecipe();
 
+            Console.WriteLine("Do you wish to return to the original scale of the {0} recipe", Title) ;
+            red_warningMessage("Type in yes or anything else to progress. ");
+
+            UserInput = Console.ReadLine();
+
+            //This section of the method takes in the decision to scale up or down.
+            if (UserInput.Equals("yes"))
+            {
+                resetQuantities();
+            }else
+            { 
+                Console.WriteLine("\n\n\n");
+            }
 
 
+
+
+
+        }
+
+       public void resetQuantities()
+        {
+            for (int i = 0; i < List_of_ingredients.Length; i++)
+            {
+                List_of_ingredients[i].reset_quantity();
+            }
+            Console.WriteLine("This is the recipe with original quantities.");
+        }
+
+        public Boolean stop() //This method will allow user stop entering a recipe.
+        {
+            return true;
         }
 
         

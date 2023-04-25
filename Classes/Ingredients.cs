@@ -18,7 +18,6 @@ namespace ST10139225_K_Baholo_Part1.Classes
             setName();
             setQuantity();
             setUnit_of_meausurement();
-            reset_quantity();
 
 
 
@@ -82,6 +81,8 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
             }
 
+            Scaled_quantity = Quanity_of_ingredient;
+
         }
 
 
@@ -96,7 +97,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
             public void reset_quantity()
             {
-                Scaled_quantity = Quanity_of_ingredient;
+            Scaled_quantity = Quanity_of_ingredient;
 
             }
             public void setUnit_of_meausurement()
@@ -226,17 +227,14 @@ namespace ST10139225_K_Baholo_Part1.Classes
                 if (Scaled_quantity < 1)
                 {
                     Console.WriteLine("Sq: " + Scaled_quantity);
-                    Unit_of_Measurement = "spoon(s)";
                     value = Scaled_quantity * 16;
                     Console.WriteLine("Value: " + value);
-
                     Scaled_quantity = value;
+                    Unit_of_Measurement = "spoon(s)";
+
 
                 }
-            }
-
-
-            if (Unit_of_Measurement.Equals("spoon(s)"))
+            }else if (Unit_of_Measurement.Equals("spoon(s)"))
             {
                 Scaled_quantity = Quanity_of_ingredient / Factor;
 
@@ -246,19 +244,19 @@ namespace ST10139225_K_Baholo_Part1.Classes
                     value = Scaled_quantity * 3;
                     Scaled_quantity = value;
                 }
-            }
-            if (Scaled_quantity < 1 && Unit_of_Measurement.Equals("litre(s)"))
+            }else if ( Unit_of_Measurement.Equals("liter(s)"))
             {
                 Scaled_quantity = Quanity_of_ingredient / Factor;
 
                 if (Scaled_quantity < 1)
                 {
-                    Unit_of_Measurement = "milliliters";
                     value = Scaled_quantity * 1000;
                     Scaled_quantity = value;
+                    Unit_of_Measurement = "milliliters";
+
                 }
             }
-            if (Unit_of_Measurement.Equals("kilogram(s)"))
+            else if (Unit_of_Measurement.Equals("kilogram(s)"))
             {
                 Scaled_quantity = Quanity_of_ingredient / Factor;
 
