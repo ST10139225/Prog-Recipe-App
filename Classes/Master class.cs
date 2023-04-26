@@ -174,17 +174,20 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
         public void restart_App()
         {
-            Console.WriteLine(" \nEnter 'new' to enter a recipe, anything else will exit the program.");
+            Console.WriteLine(" \nEnter 'yes' to enter a recipe, anything else will exit the program.");
             userinput = Console.ReadLine();
-            if (string.IsNullOrEmpty(userinput) || userinput.Equals("new") == false)
+            if (string.IsNullOrEmpty(userinput) || userinput.Equals("yes") == false)
             {
                 System.Environment.Exit(0); //To exit the recipe program.
             }
             else
                 Console.Clear();
             start();
+            printAllRecipes();
             selectARecipe();
             DeleteData();
+            addAnotherRecipe();
+
             restart_App();
 
         }
