@@ -12,6 +12,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
             private float Quanity_of_ingredient; //To store the quantity of an ingredient
             private string Unit_of_Measurement;  //To store the unit of measurement of an ingredient
         private float Scaled_quantity; //To store the scaled quantity of an ingredient
+        private string Scaled_Unit_of_Measurement; //To store the scaled unit of measurement of an ingredient
 
         public Ingredients()
         {
@@ -88,26 +89,30 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
         public void PrintIngredient()
             {
-            string line = String.Format("{0,-15} {1,-15} {2,-13}", Name_of_Ingredient, Scaled_quantity, Unit_of_Measurement);
+            string line = String.Format("{0,-15} {1,-15} {2,-13}", Name_of_Ingredient, Scaled_quantity, Scaled_Unit_of_Measurement);
             Console.WriteLine(line);
 
                
             }
 
 
-            public void reset_quantity_after_up_scale(float factor) //This method is used return original values after scaling up.
+            public void reset_quantity() //This method is used return original values after scaling up.
             {
-            float value = factor;
-            scale_down_ingredient(value);
+            Scaled_quantity = Quanity_of_ingredient;
 
             }
-            public void reset_quantity_after_down_scale(float factor) //This method is used return original values after scaling down.
+            public void reset_Scaled_Unit_of_Measurement()//This method is used return original values after scaling down.
         {
-            float value = factor;
 
-            scale_up_ingredient(value);
+            Scaled_Unit_of_Measurement = Unit_of_Measurement;
 
             }
+
+        public void reset()
+        {
+            reset_quantity();
+            reset_Scaled_Unit_of_Measurement();
+        }
 
             public void setUnit_of_meausurement()
             {
@@ -179,7 +184,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
                 if (Scaled_quantity >= 16)
                 {
-                    Unit_of_Measurement = "cup(s)";
+                    Scaled_Unit_of_Measurement = "cup(s)";
                     value = Scaled_quantity/16;
                     Scaled_quantity = value;
 
@@ -193,7 +198,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
                 if (Scaled_quantity >= 3)
                 {
-                    Unit_of_Measurement = "spoon(s)";
+                    Scaled_Unit_of_Measurement = "spoon(s)";
                     value = Scaled_quantity / 3;
                     Scaled_quantity = value;
                 }
@@ -204,7 +209,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
                 if (Scaled_quantity >= 1000)
                 {
-                    Unit_of_Measurement = "liter(s)";
+                    Scaled_Unit_of_Measurement = "liter(s)";
                     value = Scaled_quantity / 1000;
                     Scaled_quantity = value;
                 }
@@ -215,7 +220,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
                 if (Scaled_quantity >= 1000)
                 {
-                    Unit_of_Measurement = "kilogram(s)";
+                    Scaled_Unit_of_Measurement = "kilogram(s)";
                     value = Scaled_quantity / 1000;
                     Scaled_quantity = value;
                 }
@@ -238,7 +243,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
                     value = Scaled_quantity * 16;
                     Scaled_quantity = value;
-                    Unit_of_Measurement = "spoon(s)";
+                    Scaled_Unit_of_Measurement = "spoon(s)";
 
 
                 }
@@ -248,7 +253,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
                 if (Scaled_quantity < 1)
                 {
-                    Unit_of_Measurement = "tea spoon(s)";
+                    Scaled_Unit_of_Measurement = "tea spoon(s)";
                     value = Scaled_quantity * 3;
                     Scaled_quantity = value;
                 }
@@ -260,7 +265,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
                 {
                     value = Scaled_quantity * 1000;
                     Scaled_quantity = value;
-                    Unit_of_Measurement = "milliliters";
+                    Scaled_Unit_of_Measurement = "milliliters";
 
                 }
             }
@@ -270,7 +275,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
                 if (Scaled_quantity < 1)
                 {
-                    Unit_of_Measurement = "grams";
+                    Scaled_Unit_of_Measurement = "grams";
                     value = Scaled_quantity * 1000;
                     Scaled_quantity = value;
                 }

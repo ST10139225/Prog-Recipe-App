@@ -15,12 +15,13 @@ namespace ST10139225_K_Baholo_Part1.Classes
         string userinput = "";
         int number_of_recipes = 0;
 
-        Recipe[] recipes;
+        List<Recipe> recipes = new List<Recipe>();
 
 
         public Master_class()
         {
             start();
+            printAllRecipes();  
             selectARecipe();
             DeleteData();
             restart_App();
@@ -37,7 +38,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
                 red_warningMessage("Please a number greater than 0");
                 start();
                 }
-                populateArray(number_of_recipes);
+                AddRecipe(number_of_recipes);
                 
             }
             catch(FormatException )
@@ -63,6 +64,13 @@ namespace ST10139225_K_Baholo_Part1.Classes
             try
             {
                  selectedRecipe = getRecipe(findRecipe(userinput));
+
+                selectedRecipe.printRecipe();
+
+                selectedRecipe.scale_recipe();;
+
+                selectedRecipe.reset();
+
             }
             catch(Exception )
             {
@@ -70,32 +78,67 @@ namespace ST10139225_K_Baholo_Part1.Classes
                 selectARecipe();
             }
 
-            selectedRecipe.printRecipe();
+          
+
+            
+
 
         }
+
+        public void addAnotherRecipe()
+        {
+            Console.WriteLine("Do you want to delete all data? \nEnter yes to proceed, anything else will make you progress:");
+            userinput = Console.ReadLine();
+            if (userinput.Equals("yes"))
+            {
+                AddRecipe(1);
+            }
+            else
+            {
+
+            }
+        }
+
+        
 
         private int findRecipe(string title) //To find the recipe in the array.
         {
             int index = -1 ; 
-            for(int i=0; i<recipes.Length; i++)
+            for(int i=0; i<recipes.Count; i++)
             {
-                if (recipes[i].Title.Equals(title))
-                {
-                   index= i;
-                    i = recipes.Length;
-                }
+                
+                    if (recipes[i].Title.Equals(title))
+                    {
+
+                        index = i;
+                    
+            }
+              
             }
 
             return index;
         }
 
-        public void populateArray(int number)// This method adds populates the recipes array.
+        public void AddRecipe(int number)// This method adds populates the recipes array.
         {
-            recipes = new Recipe[number];
+            
             for (int i = 0; i < number; i++)
             {
-                recipes[i] = new Recipe();
+                recipes.Add(new Recipe());
             }
+        }
+
+        private void printAllRecipes()
+        {
+            red_warningMessage("\n\n\n\nAll the recipes are:");
+            foreach(Recipe recipe in recipes) 
+             {
+                Console.ForegroundColor= ConsoleColor.Green;
+                Console.WriteLine("\n"+recipe.Title+"\n");    
+            }
+                Console.ForegroundColor= ConsoleColor.White;
+
+
         }
 
 
