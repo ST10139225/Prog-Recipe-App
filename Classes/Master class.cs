@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
@@ -20,6 +21,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
         public Master_class()
         {
             start();
+            selectARecipe();
             DeleteData();
             restart_App();
         }
@@ -54,8 +56,37 @@ namespace ST10139225_K_Baholo_Part1.Classes
             return recipes[index];
         }
 
-        public void selectARecipe(){
-            
+        public void selectARecipe(){ //This method is for selecting a recipe to scale or edit.
+            Recipe selectedRecipe = null; 
+            Console.WriteLine("Select the recipe you want to scale. \nEnter the name of the recipe: ");
+            userinput = Console.ReadLine();
+            try
+            {
+                 selectedRecipe = getRecipe(findRecipe(userinput));
+            }
+            catch(Exception )
+            {
+                red_warningMessage("Please enter a name of an existing recipe.");
+                selectARecipe();
+            }
+
+            selectedRecipe.printRecipe();
+
+        }
+
+        private int findRecipe(string title) //To find the recipe in the array.
+        {
+            int index = -1 ; 
+            for(int i=0; i<recipes.Length; i++)
+            {
+                if (recipes[i].Title.Equals(title))
+                {
+                   index= i;
+                    i = recipes.Length;
+                }
+            }
+
+            return index;
         }
 
         public void populateArray(int number)// This method adds populates the recipes array.
@@ -78,7 +109,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
             userinput = Console.ReadLine();
             if (string.IsNullOrEmpty(userinput)||userinput.Equals("yes")==false)
             {
-                red_warningMessage("Please the either yes");
+                red_warningMessage("Please the yes");
                 DeleteData(); 
             }
             
@@ -103,6 +134,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
             else
                 Console.Clear();
             start();
+            selectARecipe();
             DeleteData();
             restart_App();
 

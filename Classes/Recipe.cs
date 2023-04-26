@@ -12,13 +12,13 @@ namespace ST10139225_K_Baholo_Part1.Classes
     //This is a class for recipes. 
     internal class Recipe
     {
-        String Title = "";//To store the name of the recipe.
+      public String Title = "";//To store the name of the recipe.
 
         String UserInput = ""; //To store user input.
 
-        Steps[] List_of_Steps;         //To store all the steps.
+        public Steps[] List_of_Steps;         //To store all the steps.
 
-        Ingredients[] List_of_ingredients; //To store all the ingredients.
+        public Ingredients[] List_of_ingredients; //To store all the ingredients.
 
         float scale = 0; //This variable stores the factor of scale.
         String scaleType = ""; //To store which type of scaling was choosen, whether it was an up scale or down scale.
