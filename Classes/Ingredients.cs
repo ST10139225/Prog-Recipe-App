@@ -97,12 +97,15 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
             public void reset_quantity_after_up_scale(float factor) //This method is used return original values after scaling up.
             {
-            scale_down_ingredient(factor);
+            float value = factor;
+            scale_down_ingredient(value);
 
             }
             public void reset_quantity_after_down_scale(float factor) //This method is used return original values after scaling down.
         {
-            scale_up_ingredient(factor);
+            float value = factor;
+
+            scale_up_ingredient(value);
 
             }
 

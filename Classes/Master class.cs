@@ -20,27 +20,21 @@ namespace ST10139225_K_Baholo_Part1.Classes
         public Master_class()
         {
             start();
-            
             DeleteData();
-
-
-
+            restart_App();
         }
 
         public void start()// This method starts the application.
         {
             Console.WriteLine("Pleases enter the number of recipes you would like to enter");
-           
-
             userinput= Console.ReadLine();
-            if (string.IsNullOrEmpty(userinput))
-            {
-                red_warningMessage("Please the number, e.g. 12, of the recipes you want. ");
-                start();
-            }
             try
             {  
                 number_of_recipes= int.Parse(userinput);
+                if(number_of_recipes<1){
+                red_warningMessage("Please a number greater than 0");
+                start();
+                }
                 populateArray(number_of_recipes);
                 
             }
@@ -60,6 +54,10 @@ namespace ST10139225_K_Baholo_Part1.Classes
             return recipes[index];
         }
 
+        public void selectARecipe(){
+            
+        }
+
         public void populateArray(int number)// This method adds populates the recipes array.
         {
             recipes = new Recipe[number];
@@ -68,6 +66,8 @@ namespace ST10139225_K_Baholo_Part1.Classes
                 recipes[i] = new Recipe();
             }
         }
+
+
 
 
 
@@ -89,6 +89,11 @@ namespace ST10139225_K_Baholo_Part1.Classes
             }
 
             red_warningMessage("\n\nThere are no recipes to display.");
+           
+        }
+
+        public void restart_App()
+        {
             Console.WriteLine(" \nEnter 'new' to enter a recipe, anything else will exit the program.");
             userinput = Console.ReadLine();
             if (string.IsNullOrEmpty(userinput) || userinput.Equals("new") == false)
@@ -97,11 +102,13 @@ namespace ST10139225_K_Baholo_Part1.Classes
             }
             else
                 Console.Clear();
-                start();
-            
+            start();
+            DeleteData();
+            restart_App();
+
         }
 
-        
+
 
         public void red_warningMessage(string message) //This method is to display warning messages in red.
         {
