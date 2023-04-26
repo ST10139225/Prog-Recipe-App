@@ -21,34 +21,39 @@ namespace ST10139225_K_Baholo_Part1.Classes
         public Master_class()
         {
             start();
-            printAllRecipes();  
+            printAllRecipes();
             selectARecipe();
             DeleteData();
+            addAnotherRecipe();
+
             restart_App();
         }
 
         public void start()// This method starts the application.
         {
             Console.WriteLine("Pleases enter the number of recipes you would like to enter");
-            userinput= Console.ReadLine();
+            userinput = Console.ReadLine();
             try
-            {  
-                number_of_recipes= int.Parse(userinput);
-                if(number_of_recipes<1){
-                red_warningMessage("Please a number greater than 0");
-                start();
+            {
+                number_of_recipes = int.Parse(userinput);
+                if (number_of_recipes < 1) {
+                    red_warningMessage("Please a number greater than 0");
+                    start();
                 }
-                AddRecipe(number_of_recipes);
-                
+                for (int i = 0; i < number_of_recipes; i++)
+                {
+                    AddRecipe();
+                }
+
             }
-            catch(FormatException )
+            catch (FormatException)
             {
                 red_warningMessage("Please the number, e.g. 12, of the recipes you want. ");
                 start();
 
             }
 
-           
+
 
         }
 
@@ -57,41 +62,42 @@ namespace ST10139225_K_Baholo_Part1.Classes
             return recipes[index];
         }
 
-        public void selectARecipe(){ //This method is for selecting a recipe to scale or edit.
-            Recipe selectedRecipe = null; 
+        public void selectARecipe() { //This method is for selecting a recipe to scale or edit.
+            Recipe selectedRecipe = null;
             Console.WriteLine("Select the recipe you want to scale. \nEnter the name of the recipe: ");
             userinput = Console.ReadLine();
             try
             {
-                 selectedRecipe = getRecipe(findRecipe(userinput));
+                selectedRecipe = getRecipe(findRecipe(userinput));
 
                 selectedRecipe.printRecipe();
 
-                selectedRecipe.scale_recipe();;
+                selectedRecipe.scale_recipe(); ;
 
                 selectedRecipe.reset();
 
             }
-            catch(Exception )
+            catch (Exception)
             {
                 red_warningMessage("Please enter a name of an existing recipe.");
                 selectARecipe();
             }
 
-          
 
-            
+
+
 
 
         }
 
         public void addAnotherRecipe()
         {
-            Console.WriteLine("Do you want to delete all data? \nEnter yes to proceed, anything else will make you progress:");
+            Console.WriteLine("Do you want to enter a new recipe? \nEnter yes to proceed, anything else will make you progress:");
             userinput = Console.ReadLine();
             if (userinput.Equals("yes"))
             {
-                AddRecipe(1);
+                AddRecipe();
+                selectARecipe();
             }
             else
             {
@@ -99,33 +105,37 @@ namespace ST10139225_K_Baholo_Part1.Classes
             }
         }
 
-        
+
 
         private int findRecipe(string title) //To find the recipe in the array.
         {
-            int index = -1 ; 
-            for(int i=0; i<recipes.Count; i++)
+            int index = -1;
+            for (int i = 0; i < recipes.Count; i++)
             {
-                
+                try
+                {
                     if (recipes[i].Title.Equals(title))
                     {
 
                         index = i;
-                    
-            }
-              
-            }
 
+                    }
+                }
+                catch (NullReferenceException)
+                {
+                    red_warningMessage("Please re-enter value");
+                    findRecipe(title);
+                }
+            }
             return index;
         }
 
-        public void AddRecipe(int number)// This method adds populates the recipes array.
+        public void AddRecipe()// This method adds populates the recipes array.
         {
             
-            for (int i = 0; i < number; i++)
-            {
+            
                 recipes.Add(new Recipe());
-            }
+            
         }
 
         private void printAllRecipes()

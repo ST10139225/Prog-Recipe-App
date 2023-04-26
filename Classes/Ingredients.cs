@@ -167,9 +167,10 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
 
             }
+            Scaled_Unit_of_Measurement = Unit_of_Measurement;
 
-            
-            }
+
+        }
         public void scale_up_ingredient(float Factor) 
             {
             /* This is the first out of the two methods responsible for changing unit of measurements accordingly when the recipe is
@@ -178,7 +179,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
             */
             float value = 0; //This value will be used for conversion. e.g. 16 tbs = 1 cup.
 
-            if (Unit_of_Measurement.Equals("spoon(s)"))
+            if (Scaled_Unit_of_Measurement.Equals("spoon(s)"))
             {
                 Scaled_quantity = Quanity_of_ingredient * Factor;
 
@@ -192,7 +193,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
                 }
             }
-            else if (Unit_of_Measurement.Equals("tea spoon(s)"))
+            else if (Scaled_Unit_of_Measurement.Equals("tea spoon(s)"))
             {
                 Scaled_quantity = Quanity_of_ingredient * Factor;
 
@@ -203,7 +204,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
                     Scaled_quantity = value;
                 }
             }
-            else if (Unit_of_Measurement.Equals("milliliters"))
+            else if (Scaled_Unit_of_Measurement.Equals("milliliters"))
             {
                 Scaled_quantity = Quanity_of_ingredient * Factor;
 
@@ -214,7 +215,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
                     Scaled_quantity = value;
                 }
             }
-            else if ( Unit_of_Measurement.Equals("grams"))
+            else if ( Scaled_Unit_of_Measurement.Equals("grams"))
             {
                 Scaled_quantity = Quanity_of_ingredient * Factor;
 
@@ -233,7 +234,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
             //This is the second out of two methods responsible for changing the unit of measurement according to the scaled quantity.
 
             float value = 0;
-            if (Unit_of_Measurement.Equals("cup(s)"))
+            if (Scaled_Unit_of_Measurement.Equals("cup(s)"))
             {
 
                 Scaled_quantity = Quanity_of_ingredient / Factor;
@@ -247,7 +248,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
 
                 }
-            }else if (Unit_of_Measurement.Equals("spoon(s)"))
+            }else if (Scaled_Unit_of_Measurement.Equals("spoon(s)"))
             {
                 Scaled_quantity = Quanity_of_ingredient / Factor;
 
@@ -257,7 +258,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
                     value = Scaled_quantity * 3;
                     Scaled_quantity = value;
                 }
-            }else if ( Unit_of_Measurement.Equals("liter(s)"))
+            }else if ( Scaled_Unit_of_Measurement.Equals("liter(s)"))
             {
                 Scaled_quantity = Quanity_of_ingredient / Factor;
 
@@ -269,7 +270,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
                 }
             }
-            else if (Unit_of_Measurement.Equals("kilogram(s)"))
+            else if (Scaled_Unit_of_Measurement.Equals("kilogram(s)"))
             {
                 Scaled_quantity = Quanity_of_ingredient / Factor;
 

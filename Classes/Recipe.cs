@@ -149,8 +149,8 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
                 scale = getScale_value();
                 selectTypeofScale(scale);
-               
 
+                printRecipe();
 
 
             }
@@ -194,21 +194,20 @@ namespace ST10139225_K_Baholo_Part1.Classes
             if (UserInput.Equals("u"))
             {
                 scale_up_ingredients(scale);
-                printRecipe();
+               
 
 
             }
             else if (UserInput.Equals("d"))
             {
                 scale_down_ingredients(scale);
-                printRecipe();
+              
             }
             else
             {
                 red_warningMessage("Type in u for up or d for down");
                 selectTypeofScale(scale);
             }
-
         } 
        
 
