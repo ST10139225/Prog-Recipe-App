@@ -166,11 +166,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
                 DeleteData(); 
             }
             
-
-            for(int i =0; i<number_of_recipes;i++) {
-                recipes[i] = null;
-
-            }
+            recipes.Clear();
 
             red_warningMessage("\n\nThere are no recipes to display.");
            
