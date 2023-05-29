@@ -11,15 +11,19 @@ namespace ST10139225_K_Baholo_Part1.Classes
     {
 
         string food_Groups;
-        int calories; 
+        int calories;
+        public delegate void NotificationHandler(string CaloriesAlert);
+        private NotificationHandler Alert;
+
+
 
         public Ingredients_v2()
         {
 
             setcalories();
             setFood_groups();
-            Console.WriteLine(printIngredient());
-
+            Console.WriteLine(String.Format("{0,-15} {1,-15} {2,-13} {3,10} {4,12}", "Ingredient ", "Quantity", "Unit of Measurement", "Calories", "Food group"));
+            printIngredient();
 
         }
        public void setFood_groups()
@@ -37,7 +41,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
               int i=  int.Parse(userinput);
                 if ((i<=0)||(i>=0))
                 {
-                    Console.WriteLine("\n\n");
+                    Console.WriteLine("\n Do not enter a number as a food group, enter a name: 'Fish' ");
                     setFood_groups();
                 }
 
@@ -79,15 +83,37 @@ namespace ST10139225_K_Baholo_Part1.Classes
             return calories;                  
         }   
 
-        public string printIngredient()
+        public void printIngredient()
         {
-            Console.WriteLine("Ingredient: \n\n");
-            string line = String.Format("{0,-15} {1,-15} {2,-13} {3,-13} {4,-13}", Name_of_Ingredient, Scaled_quantity, Scaled_Unit_of_Measurement, getcalories(), getFood_groups());
+            string line = String.Format("{0,-15} {1,-15} {2,-15} {3,10} {4,10}", Name_of_Ingredient, Scaled_quantity, Scaled_Unit_of_Measurement, getcalories(), getFood_groups());
+            Console.WriteLine(line);
 
-            return line;
+            
         }
 
+        //The delegate to notify the user when the calories exceed 300.
+        
+        public void registeringCaloriesAlert(NotificationHandler Alertformat)
+        {
+            Alert  = Alertformat;
+        }
+        
+        public void check_Calories(int Calories, string name, float quantity, string unit)
+        {
+            if(Calories > 300)
+            {
+                Alert?.Invoke("Be careful! Calories of "+quantity+" "+unit+" of"+name+" exceed 300");
+            }else if (Calories == 300)
+            {
+                Alert?.Invoke("That was close! Calories of " + quantity + " " + unit + " of" + name + " are at max recommended amount");
 
+            }
+            else if (Calories < 300)
+            {
+                Alert?.Invoke("Staying lean! Calories of this " + quantity + " " + unit + " of" + name + " are of a good amount");
+
+            }
+        }
         
 
 

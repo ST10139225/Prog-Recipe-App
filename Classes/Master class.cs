@@ -70,7 +70,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
             {
                 selectedRecipe = getRecipe(findRecipe(userinput));
 
-                selectedRecipe.printRecipe();
+                //selectedRecipe.printRecipe();
 
                 selectedRecipe.scale_recipe(); ;
 

@@ -20,28 +20,18 @@ namespace ST10139225_K_Baholo_Part1.Classes
             start();
         }
 
+        //This is the target for the delegate which will be used in all the ingredients as they get stored in the lists..
+         static void notifyUser(string alert)
+        {
+            Console.WriteLine(String.Format("\n\n{0,-24}{1,8}", "", ">>>>>ALERT<<<<<\n"));
+
+            Console.WriteLine(String.Format("{0,12}{1,8}{2,2}\n\n",">>>>>> ",alert," <<<<<<"));
+        }
         public void start()
         {
-            int choice = -1;
-            choice = Displaymenu();
-            if(choice == 0) {
-                addRecipe();
-                foreach(Steps step in List_of_Steps)
-                {
-                    Steps_list.Add(step);
-                }foreach(Ingredients_v2 ingredient in List_of_ingredients)
-                {
-                    Ingredient_list.Add(ingredient);
-                }
-
-            }
-
-           printTheRecipe();
-            if(choice == 1) {
-                which_menu = 2;
-                Displaymenu();  
-            }
-            if(choice == 2) { }
+            Addingredients();
+            Addsteps();
+            printRecipe();
         }
 
         public int Displaymenu() //This is the method responsible for displaying the menu
@@ -109,7 +99,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
             foreach (Ingredients_v2 ingredient in Ingredient_list)
             {
-                Console.WriteLine(ingredient.printIngredient());
+                ingredient.printIngredient();
                
             }
             Console.WriteLine("********Steps********\n\n");
@@ -121,7 +111,89 @@ namespace ST10139225_K_Baholo_Part1.Classes
                 
             }
         }
-        
-        
+
+        //This is to add steps to the step list:
+        string userinput = "";
+        private void Addsteps() //This method is responsible for adding steps.
+        {
+            int Number_of_steps = 0;
+            Console.WriteLine("Please enter the number of steps:");
+            userinput = Console.ReadLine();
+            try
+            {
+                Number_of_steps = int.Parse(userinput);
+            }
+            catch (FormatException)
+            {
+                red_warningMessage("Please enter an integer value, e.g. 23 for the number of steps.");
+                Addsteps();
+            }
+
+
+            for (int index = 0; index < Number_of_steps; index++)
+            {
+                Steps step = new Steps(index + 1);
+                Steps_list.Add(step);
+            }
+        }
+
+
+        //This method will add the ingredients to the ingredients list and this where the target for the delegate will be used:
+        private void Addingredients()
+        {
+            int Number_of_ingredients = 0;
+            Console.WriteLine("Please enter the number of ingredients:");
+            userinput = Console.ReadLine();
+            try
+            {
+                Number_of_ingredients = int.Parse(userinput);
+            }
+            catch (FormatException)
+            {
+                red_warningMessage("Please enter an integer value, e.g. 23 for the number of steps.");
+                Addingredients();
+            }
+
+
+            for (int index = 0; index < Number_of_ingredients; index++)
+            {
+                Ingredients_v2 ingredient = new Ingredients_v2();
+                ingredient.registeringCaloriesAlert(new Ingredients_v2.NotificationHandler(notifyUser)); // Target for delegate
+                ingredient.check_Calories(ingredient.getcalories(), ingredient.Name_of_Ingredient, ingredient.Quanity_of_ingredient,ingredient.Unit_of_Measurement);
+                Ingredient_list.Add(ingredient);
+
+            }
+        }
+
+        public void printRecipe() //This method will display a selected recipe.
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("\n \n{0}:", Title);
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("\nIngredients: ");
+            Console.ForegroundColor = ConsoleColor.White;
+
+            string line = String.Format("{0,-15} {1,-15} {2,-13} {3,10} {4,12}", "Ingredient ", "Quantity", "Unit of Measurement", "Calories", "Food group");
+            Console.WriteLine(line);
+
+            foreach (Ingredients_v2 ingredient in Ingredient_list)
+            {
+
+                ingredient.printIngredient();
+            }
+
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("\n \nSteps: ");
+            Console.ForegroundColor = ConsoleColor.White;
+
+            foreach (Steps step in Steps_list)
+            {
+                Console.WriteLine("{0}", step.getStep());
+            }
+        }
+
+
     }
 }
