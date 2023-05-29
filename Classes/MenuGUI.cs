@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
         public void display()
         {
+            
             string currentChoice="";
             string backindicator = "<<<";
             string frontindicator = ">>>";
@@ -34,6 +36,9 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
             for(int i =0; i< menuItems.Length; i++) // This is to highlight the active menu item according to arrows.
             {
+
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.BackgroundColor = ConsoleColor.Black;
                 if (choosenOption == i)
                 {
                     Console.ForegroundColor= ConsoleColor.Black;
@@ -53,8 +58,10 @@ namespace ST10139225_K_Baholo_Part1.Classes
                 Console.WriteLine(String.Format("{0}{1}{2}", backindicator, currentChoice
                     , frontindicator));
             }
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.Black;
 
-            
+
         }
         public int getSelectedOption() //This method determines which arrow was pressed by the user.
         {
@@ -71,10 +78,21 @@ namespace ST10139225_K_Baholo_Part1.Classes
                 if(cKey== ConsoleKey.UpArrow|| cKey == ConsoleKey.W || cKey == ConsoleKey.I||cKey==ConsoleKey.RightArrow)
                 {
                     choosenOption --;
+                    if (choosenOption <0)
+                    {
+                        choosenOption++;
+                    }
 
-                }if(cKey== ConsoleKey.DownArrow|| cKey == ConsoleKey.S || cKey == ConsoleKey.K||cKey==ConsoleKey.LeftArrow)
+                }
+                if(cKey== ConsoleKey.DownArrow|| cKey == ConsoleKey.S || cKey == ConsoleKey.K||cKey==ConsoleKey.LeftArrow)
                 {
-                    choosenOption ++;
+                    choosenOption++;
+                    if (choosenOption > 2)
+                    {
+                        choosenOption--;
+                    }
+                       
+
 
                 }
             }
