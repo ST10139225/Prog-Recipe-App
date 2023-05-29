@@ -39,7 +39,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
         }
 
-        public int openUpSecondMenu() //This will show the second menu after adding a recipe.
+        public int openUpSecondMenu(string lines) //This will show the second menu after adding a recipe.
         {
             //This for decoration
             String instruction = @"
@@ -48,9 +48,10 @@ namespace ST10139225_K_Baholo_Part1.Classes
             String[] options =
             {
             "Scale recipe",
+            "reset recipe",
             "Delete recipe",
-            "Edit recipe",
-            "back to main"
+            "back to main",
+            "display recipe"
             };
             int choice = 0;
 

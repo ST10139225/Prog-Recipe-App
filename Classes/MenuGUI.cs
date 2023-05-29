@@ -35,6 +35,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
             string frontindicator = ">>>";
 
             Console.WriteLine(instructions);
+            Console.WriteLine(lines);
 
             for(int i =0; i< menuItems.Length; i++) // This is to highlight the active menu item according to arrows.
             {
@@ -99,6 +100,8 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
                 }
             }
+            Console.WriteLine(lines);
+
             return choosenOption;
         }
 

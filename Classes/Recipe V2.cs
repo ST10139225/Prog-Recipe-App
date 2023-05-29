@@ -26,7 +26,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
             calorie_Checker= calorie_checker;
         }
 
-        public void check_Total_Calories(float total_calories)
+        public void check_Total_Calories()
         {
             if (total_Calories > 300)
             {
@@ -173,6 +173,98 @@ namespace ST10139225_K_Baholo_Part1.Classes
             }
         }
 
+        float Scale = 0;
+        public void scale_recipe() ///This method is responsible for scaling the recipe.
+        {
+            float scale = 0; //This variable stores the factor of scale.
+
+            scale = getScale_value();
+            Scale = scale;
+            selectTypeofScale(Scale);
+
+        }
+
+        private float getScale_value() //This method is responsible for getting the value, 0.5, 1, 2 or 3 for scaling the recipe 
+        {
+            float value = 0f;
+
+            Console.WriteLine("Enter the factor of scale to apply, e.g. 0.5");
+            UserInput = Console.ReadLine();
+            try
+            {
+                value = float.Parse(UserInput);
+            }
+            catch (FormatException)
+            {
+                red_warningMessage("Please enter a value, e.g. 2.5 or 0.5 ");
+                getScale_value();
+            }
+            return value;
+        }
+
+        string UserInput = "";
+        private void selectTypeofScale(float scale) //This method is to select whether the recipe should be scaled up or down.
+        {
+            Console.WriteLine("Do you wish to scale up or scale down the recipe? \n\nType in u for up or d for down");
+            UserInput = Console.ReadLine();
+
+            //This section of the method takes in the decision to scale up or down.
+            if (UserInput.Equals("u"))
+            {
+                scale_up_ingredients(scale);
+
+
+
+            }
+            else if (UserInput.Equals("d"))
+            {
+                scale_down_ingredients(scale);
+
+            }
+            else
+            {
+                red_warningMessage("Type in u for up or d for down");
+                selectTypeofScale(scale);
+            }
+        }
+
+
+        public void scale_up_ingredients(float scale)
+        {
+            
+
+            for (int i = 0; i < Ingredient_list.Count; i++)
+            {
+                Ingredient_list.ElementAt(i).scale_up_ingredient(scale);
+            }
+        }
+        public void scale_down_ingredients(float scale)
+        {
+
+            for (int i = 0; i < Ingredient_list.Count; i++)
+            {
+                Ingredient_list.ElementAt(i).scale_down_ingredient(scale);
+            }
+        }
+
+
+        public void reset()
+        {
+            Console.WriteLine("Do you wish to reset the recipe? \n\nType in 'yes' or 'no'");
+            UserInput = Console.ReadLine();
+
+            //This section of the method takes in the decision to scale up or down.
+            if (UserInput.Equals("yes"))
+            {
+                for (int i = 0; i < Ingredient_list.Count; i++)
+                {
+                    Ingredient_list.ElementAt(i).reset();
+                }
+                //printRecipe();
+
+            }
+            else Console.WriteLine("\n");
+        }
 
 
 

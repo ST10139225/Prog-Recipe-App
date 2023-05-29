@@ -27,6 +27,12 @@ namespace ST10139225_K_Baholo_Part1.Classes
             ///This is part 2 changes
             ///
            menu = new Menu();
+            startMenu();
+           
+        }
+
+        public void startMenu()
+        {
             if (quite != 0)
             {
                 choice = menu.openUpMenu(recipes.Count);
@@ -59,7 +65,6 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
             }
         }
-
         private void start()// This method starts the application.
         {
             Console.WriteLine("Pleases enter the number of recipes you would like to enter");
@@ -84,8 +89,30 @@ namespace ST10139225_K_Baholo_Part1.Classes
                 start();
 
             }
+            Console.WriteLine("Do you want to exit to main menu? Yes or no");
+            string UserInput = Console.ReadLine();
+
+            if (UserInput.Equals("yes"))
+            {
+                startMenu();
 
 
+            }
+            else if (UserInput.Equals("no"))
+            {
+                Console.WriteLine("Final stage...");
+                System.Environment.Exit(0);
+
+            }
+            else if (UserInput.Equals("yes") == false && UserInput.Equals("no") == false)
+            {
+                red_warningMessage("Please enter an yes or no. ");
+                System.Environment.Exit(0);
+            }
+           
+            
+
+        
 
 
 
@@ -93,11 +120,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
         }
 
         
-        //For displaying the menus
-        public void menustart()
-        {
-
-        }
+       
 
         //For the delegate
         static void notifyUser(string alert)
@@ -148,7 +171,16 @@ namespace ST10139225_K_Baholo_Part1.Classes
             return recipes.ElementAt(index);
         }
 
+        string line = "";
+        
         public void selectARecipe() { //This method is for selecting a recipe to scale or edit.
+            foreach (Recipe_V2 recipe in recipes)
+            {
+                Console.WriteLine("------------------------------------------------------------------------------------------------");
+                Console.WriteLine(String.Format("{0,32}{1,15}", "", recipe.getTitle()));
+                Console.WriteLine("------------------------------------------------------------------------------------------------");
+                line += "\n" + recipe.getTitle();
+            }
             Recipe_V2 selectedRecipe = null;
             Console.WriteLine("Select the recipe you want to scale. \nEnter the name of the recipe: ");
             userinput = Console.ReadLine();
@@ -157,10 +189,67 @@ namespace ST10139225_K_Baholo_Part1.Classes
                 selectedRecipe = getRecipe(findRecipe(userinput));
 
                 selectedRecipe.printRecipe();
+                
+                choice = menu.openUpSecondMenu(line);
+                if (choice == 0)
+                {
 
-                selectedRecipe.scale_recipe(); ;
+                    selectedRecipe.scale_recipe();
+                    selectedRecipe.printRecipe();
+                    startMenu();
+                    
 
-                selectedRecipe.reset();
+                }else if (choice == 1)
+                {
+                    selectedRecipe.reset();
+                    selectedRecipe.printRecipe();
+                    startMenu();
+
+
+                }
+                else if (choice == 2)
+                {
+                    Console.WriteLine("Removed" + selectedRecipe.getTitle() + " from your recipes");
+
+                    recipes.Remove(selectedRecipe);
+                    printAllRecipes();
+                    startMenu();
+
+                }
+                else if (choice == 3)
+                {
+                    startMenu();
+
+                } else if (choice == 4)
+                {
+                    selectedRecipe.registerAlert(new Recipe_V2.alertManager(notifyUser));
+                    selectedRecipe.check_Total_Calories();
+                    selectedRecipe.printRecipe();
+
+                    Console.WriteLine("Do you want to exit to main menu? Yes or no");
+                   string UserInput = Console.ReadLine();
+
+                    if (UserInput.Equals("yes"))
+                    {
+                        startMenu();    
+
+
+                    }
+                    else if (UserInput.Equals("no"))
+                    {
+                        Console.WriteLine("Final stage...");
+                        System.Environment.Exit(0);
+
+                    }
+                    else if (UserInput.Equals("yes") == false && UserInput.Equals("no") == false)
+                    {
+                        red_warningMessage("Please enter an yes or no. ");
+                        System.Environment.Exit(0); 
+                    }
+
+                }
+
+
 
 
             }
@@ -169,8 +258,6 @@ namespace ST10139225_K_Baholo_Part1.Classes
                 red_warningMessage("Please enter a name of an existing recipe.");
                 selectARecipe();
             }
-
-
 
 
 
@@ -222,6 +309,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
             Recipe_V2 recipe = new Recipe_V2();
             recipe.registerAlert(new Recipe_V2.alertManager(notifyUser));
                 recipes.Add(recipe);
+            
             
         }
 
