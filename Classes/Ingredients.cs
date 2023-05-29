@@ -8,20 +8,18 @@ namespace ST10139225_K_Baholo_Part1.Classes
 {
     internal class Ingredients
     {
-            private string Name_of_Ingredient; //To store the name of an ingredient
-            private float Quanity_of_ingredient; //To store the quantity of an ingredient
-            private string Unit_of_Measurement;  //To store the unit of measurement of an ingredient
-        private float Scaled_quantity; //To store the scaled quantity of an ingredient
-        private string Scaled_Unit_of_Measurement; //To store the scaled unit of measurement of an ingredient
+            public string Name_of_Ingredient; //To store the name of an ingredient
+            public float Quanity_of_ingredient; //To store the quantity of an ingredient
+            public string Unit_of_Measurement;  //To store the unit of measurement of an ingredient
+        public float Scaled_quantity; //To store the scaled quantity of an ingredient
+        public string Scaled_Unit_of_Measurement; //To store the scaled unit of measurement of an ingredient
+       
 
         public Ingredients()
         {
             setName();
             setQuantity();
             setUnit_of_meausurement();
-
-
-
 
         }
 
@@ -283,8 +281,13 @@ namespace ST10139225_K_Baholo_Part1.Classes
             }
             
 
+
             }
        
-        }
+
+       
+    }
+
         
 }
+

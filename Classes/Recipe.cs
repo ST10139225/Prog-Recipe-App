@@ -18,7 +18,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
         public Steps[] List_of_Steps;         //To store all the steps.
 
-        public Ingredients[] List_of_ingredients; //To store all the ingredients.
+        public Ingredients_v2[] List_of_ingredients; //To store all the ingredients.
 
         String scaleType = ""; //To store which type of scaling was choosen, whether it was an up scale or down scale.
 
@@ -26,16 +26,20 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
         public Recipe()
         {
+            
+            /*
+             Method were moved a new method, addRecipe.
+             */
+
+
+        }
+        public void addRecipe() // this is the new method
+        {
             setTitle();
 
             Addingredients();
 
             Addsteps();
-
-            printRecipe();
-
-
-
         }
 
         private void setTitle() //This is a setter method for the title of a recipe.
@@ -97,11 +101,11 @@ namespace ST10139225_K_Baholo_Part1.Classes
                 Addingredients();
             }
 
-            List_of_ingredients = new Ingredients[Number_of_ingredients];
+            List_of_ingredients = new Ingredients_v2[Number_of_ingredients];
 
             for (int index = 0; index < Number_of_ingredients; index++)
             {
-                Ingredients ingredient = new Ingredients();
+                Ingredients_v2 ingredient = new Ingredients_v2();
                 List_of_ingredients[index] = ingredient;
             }
         }
@@ -118,7 +122,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
             string line = String.Format("{0,-15} {1,-15} {2,13}", "Ingredient ", "Quantity", "Unit of Measurement");
             Console.WriteLine(line);
 
-            foreach (Ingredients ingredient in List_of_ingredients)
+            foreach (Ingredients_v2 ingredient in List_of_ingredients)
             {
 
                 ingredient.PrintIngredient();
