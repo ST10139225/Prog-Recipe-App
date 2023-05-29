@@ -17,12 +17,14 @@ namespace ST10139225_K_Baholo_Part1.Classes
          */
         private string instructions;
         private string[] menuItems;
-        private int choosenOption=0; 
+        private int choosenOption=0;
+        string lines;
 
-        public MenuGUI(String commands, string[]options)
+        public MenuGUI(String commands, string[]options, string Lines)
         {
             instructions= commands;
             menuItems= options;
+            lines= Lines;
         }
 
         public void display()
@@ -60,7 +62,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
             }
             Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.Black;
-
+            Console.WriteLine(lines);
 
         }
         public int getSelectedOption() //This method determines which arrow was pressed by the user.
@@ -81,13 +83,14 @@ namespace ST10139225_K_Baholo_Part1.Classes
                     if (choosenOption <0)
                     {
                         choosenOption++;
+                        
                     }
 
                 }
                 if(cKey== ConsoleKey.DownArrow|| cKey == ConsoleKey.S || cKey == ConsoleKey.K||cKey==ConsoleKey.LeftArrow)
                 {
                     choosenOption++;
-                    if (choosenOption > 2)
+                    if (choosenOption > menuItems.Length-1)
                     {
                         choosenOption--;
                     }

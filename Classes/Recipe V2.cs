@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace ST10139225_K_Baholo_Part1.Classes
 {
@@ -14,7 +15,35 @@ namespace ST10139225_K_Baholo_Part1.Classes
         int which_menu = 0;//Determines which menu to display
         string[] options_main = new string[3];
 
+        // This is to keep track of the total calories of a recipe.
+        float total_Calories = 0;
+        public delegate void alertManager(string alert);
 
+        private alertManager calorie_Checker; 
+
+        public void registerAlert(alertManager calorie_checker)
+        {
+            calorie_Checker= calorie_checker;
+        }
+
+        public void check_Total_Calories(float total_calories)
+        {
+            if (total_Calories > 300)
+            {
+                calorie_Checker?.Invoke("Be careful! total_Calories of " + getTitle() + " exceed 300");
+            }
+            else if (total_Calories == 300)
+            {
+                calorie_Checker?.Invoke("That was close! total_Calories of " + getTitle() + " are at max recommended amount");
+
+            }
+            else if (total_Calories < 300)
+            {
+                calorie_Checker?.Invoke("Staying lean! total_Calories of this " + getTitle() + " are of a good amount");
+
+            }
+        }
+        //end of calorie delegate
         public Recipe_V2()
         {
             start();
@@ -23,75 +52,24 @@ namespace ST10139225_K_Baholo_Part1.Classes
         //This is the target for the delegate which will be used in all the ingredients as they get stored in the lists..
          static void notifyUser(string alert)
         {
-            Console.WriteLine(String.Format("\n\n{0,-24}{1,8}", "", ">>>>>ALERT<<<<<\n"));
+            Console.WriteLine("--------------------------------------------------------------------------------------");
+
+            Console.WriteLine(String.Format("\n\n{0,-24}{1,10}", "", ">>>>>ALERT<<<<<\n"));
 
             Console.WriteLine(String.Format("{0,12}{1,8}{2,2}\n\n",">>>>>> ",alert," <<<<<<"));
+            Console.WriteLine("--------------------------------------------------------------------------------------");
+
+
         }
         public void start()
         {
+            setTitle();
             Addingredients();
             Addsteps();
             printRecipe();
         }
 
-        public int Displaymenu() //This is the method responsible for displaying the menu
-        {
-            string input = "";
-           
-            int choice = -1; // To store user's choice 
-            
-            if (which_menu == 0)
-            {
-                options_main[0] = "1.) Enter a recipe";
-                options_main[1] = "2.) Select a recipe";
-                options_main[2] = "3.) Clear data";
-                
-                
-
-
-            }
-            else if (which_menu == 1) // When the user chooses to select a recipe, the menu will present what the user can do to the recipe
-            {
-                options_main[0] = "1.) Scale recipe";
-                options_main[1] = "2.) Delete recipe";
-                options_main[2] = "3.) Edit recipe";
-
-                
-
-            }
-            foreach (string option in options_main)
-            {
-                Console.WriteLine(option);
-            }
-            Console.WriteLine("Please select an option.");
-            input = Console.ReadLine();
-            try
-            {
-                choice = int.Parse(input);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Please enter a number for the choice, not alphabetical values\n\n");
-                Displaymenu();
-            }
-            if (input == null)
-            {
-                Console.WriteLine("Please enter your choice, 1, 2 or 3 from the option in the menu, no empty spaces please");
-                Displaymenu();
-
-            }
-            else if (choice< 0 || choice > 4)
-            {
-               Console.WriteLine("Pleases select between 1 and 3");
-                Displaymenu();
-
-            }else
-                which_menu = choice - 1;
-
-
-            return choice-1;
-        }
-
+       
         public void printTheRecipe() 
         {
             Console.WriteLine(String.Format("********{0}********\n\n",Title));
@@ -160,6 +138,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
                 Ingredients_v2 ingredient = new Ingredients_v2();
                 ingredient.registeringCaloriesAlert(new Ingredients_v2.NotificationHandler(notifyUser)); // Target for delegate
                 ingredient.check_Calories(ingredient.getcalories(), ingredient.Name_of_Ingredient, ingredient.Quanity_of_ingredient,ingredient.Unit_of_Measurement);
+                total_Calories += ingredient.getcalories();
                 Ingredient_list.Add(ingredient);
 
             }
@@ -174,7 +153,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
             Console.WriteLine("\nIngredients: ");
             Console.ForegroundColor = ConsoleColor.White;
 
-            string line = String.Format("{0,-15} {1,-15} {2,-13} {3,10} {4,12}", "Ingredient ", "Quantity", "Unit of Measurement", "Calories", "Food group");
+            string line = String.Format("{0,-15} {1,-15} {2,-13} {3,10} {4,12}", "Ingredient ", "Quantity", "Unit of Measurement", "total_Calories", "Food group");
             Console.WriteLine(line);
 
             foreach (Ingredients_v2 ingredient in Ingredient_list)
@@ -193,6 +172,21 @@ namespace ST10139225_K_Baholo_Part1.Classes
                 Console.WriteLine("{0}", step.getStep());
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     }

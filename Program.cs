@@ -8,27 +8,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
     {
         static void Main(string[] args)
         {
-            //This for decoration
-            String instruction = @"
-    
-██████╗░███████╗░█████╗░██╗██████╗░███████╗      ░█████╗░██████╗░██████╗░
-██╔══██╗██╔════╝██╔══██╗██║██╔══██╗██╔════╝      ██╔══██╗██╔══██╗██╔══██╗
-██████╔╝█████╗░░██║░░╚═╝██║██████╔╝█████╗░░      ███████║██████╔╝██████╔╝
-██╔══██╗██╔══╝░░██║░░██╗██║██╔═══╝░██╔══╝░░      ██╔══██║██╔═══╝░██╔═══╝░
-██║░░██║███████╗╚█████╔╝██║██║░░░░░███████╗      ██║░░██║██║░░░░░██║░░░░░
-╚═╝░░╚═╝╚══════╝░╚════╝░╚═╝╚═╝░░░░░╚══════╝      ╚═╝░░╚═╝╚═╝░░░░░╚═╝░░░░░
-                    Use the Up/Dowen arrow or W/S or I/K keys";
-            String[] options =
-            {
-            "Enter new Recipes",
-            "Select a Recipe",
-            "Clear all Data"
-            };
-            int choice = 0;
-
-           MenuGUI r = new MenuGUI(instruction,options);
-
-           choice= r.getSelectedOption();
+            Master_Class_v2 m = new Master_Class_v2();  
 
 
 

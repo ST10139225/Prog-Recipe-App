@@ -14,22 +14,108 @@ namespace ST10139225_K_Baholo_Part1.Classes
     {
         string userinput = "";
         int number_of_recipes = 0;
+        Menu menu;
 
-        List<Recipe> recipes = new List<Recipe>();
 
+        public List<Recipe_V2> recipes = new List<Recipe_V2>();
+
+        int quite = 1;
+        int choice = 0;
 
         public Master_class()
         {
-            start();
-            printAllRecipes();
-            selectARecipe();
-            DeleteData();
-            addAnotherRecipe();
+            ///This is part 2 changes
+            ///
+           menu = new Menu();
+            if (quite != 0)
+            {
+                choice = menu.openUpMenu(recipes.Count);
 
-            restart_App();
+            }
+            else
+                System.Environment.Exit(0);
+
+
+            if (choice == 0)
+            {
+                Console.Clear();
+                start();
+
+            }
+            else if (choice == 1)
+            {
+                selectARecipe();
+
+
+            }
+            else if (choice == 2)
+            {
+                DeleteData();
+
+            }
+            else if (choice == 3)
+            {
+                quite = 0;
+
+            }
         }
 
-        public void start()// This method starts the application.
+        private void start()// This method starts the application.
+        {
+            Console.WriteLine("Pleases enter the number of recipes you would like to enter");
+            userinput = Console.ReadLine();
+            try
+            {
+                number_of_recipes = int.Parse(userinput);
+                if (number_of_recipes < 1)
+                {
+                    red_warningMessage("Please a number greater than 0");
+                    start();
+                }
+                for (int i = 0; i < number_of_recipes; i++)
+                {
+                    AddRecipe();
+                }
+
+            }
+            catch (FormatException)
+            {
+                red_warningMessage("Please the number, e.g. 12, of the recipes you want. ");
+                start();
+
+            }
+
+
+
+
+
+
+        }
+
+        
+        //For displaying the menus
+        public void menustart()
+        {
+
+        }
+
+        //For the delegate
+        static void notifyUser(string alert)
+        {
+            Console.WriteLine(String.Format("\n\n{0,-24}{1,8}", "", ">>>>>ALERT<<<<<\n"));
+
+            Console.WriteLine(String.Format("{0,12}{1,8}{2,2}\n\n", ">>>>>> ", alert, " <<<<<<"));
+        }
+
+
+
+
+
+        /// <summary>
+        /// /////////////////End of part 2 changes
+        /// </summary>
+
+        private void start_old()// This method starts the application.
         {
             Console.WriteLine("Pleases enter the number of recipes you would like to enter");
             userinput = Console.ReadLine();
@@ -57,24 +143,25 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
         }
 
-        public Recipe getRecipe(int index)// This method gets a recipe from the array.
+        public Recipe_V2 getRecipe(int index)// This method gets a recipe from the array.
         {
-            return recipes[index];
+            return recipes.ElementAt(index);
         }
 
         public void selectARecipe() { //This method is for selecting a recipe to scale or edit.
-            Recipe selectedRecipe = null;
+            Recipe_V2 selectedRecipe = null;
             Console.WriteLine("Select the recipe you want to scale. \nEnter the name of the recipe: ");
             userinput = Console.ReadLine();
             try
             {
                 selectedRecipe = getRecipe(findRecipe(userinput));
 
-                //selectedRecipe.printRecipe();
+                selectedRecipe.printRecipe();
 
                 selectedRecipe.scale_recipe(); ;
 
                 selectedRecipe.reset();
+
 
             }
             catch (Exception)
@@ -114,7 +201,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
             {
                 try
                 {
-                    if (recipes[i].Title.Equals(title))
+                    if (recipes.ElementAt(i).Title.Equals(title))
                     {
 
                         index = i;
@@ -132,16 +219,16 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
         public void AddRecipe()// This method adds populates the recipes array.
         {
-            
-            
-                recipes.Add(new Recipe());
+            Recipe_V2 recipe = new Recipe_V2();
+            recipe.registerAlert(new Recipe_V2.alertManager(notifyUser));
+                recipes.Add(recipe);
             
         }
 
-        private void printAllRecipes()
+        public void printAllRecipes()
         {
             red_warningMessage("\n\n\n\nAll the recipes are:");
-            foreach(Recipe recipe in recipes) 
+            foreach(Recipe_V2 recipe in recipes) 
              {
                 Console.ForegroundColor= ConsoleColor.Green;
                 Console.WriteLine("\n"+recipe.Title+"\n");    

@@ -11,7 +11,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
     {
 
         string food_Groups;
-        int calories;
+        float calories;
         public delegate void NotificationHandler(string CaloriesAlert);
         private NotificationHandler Alert;
 
@@ -22,7 +22,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
             setcalories();
             setFood_groups();
-            Console.WriteLine(String.Format("{0,-15} {1,-15} {2,-13} {3,10} {4,12}", "Ingredient ", "Quantity", "Unit of Measurement", "Calories", "Food group"));
+            Console.WriteLine(String.Format("{0,-15} {1,-15} {2,-13} {3,10} {4,-19}", "Ingredient ", "Quantity", "Unit of Measurement", "Calories", "Food group"));
             printIngredient();
 
         }
@@ -65,7 +65,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
             try
             {
-                calories = int.Parse(userinput);
+                calories = float.Parse(userinput);
 
             }catch(Exception ex)
             {
@@ -78,14 +78,14 @@ namespace ST10139225_K_Baholo_Part1.Classes
         {
             return food_Groups;
         }  
-        public int getcalories()
+        public float getcalories()
         {
             return calories;                  
         }   
 
         public void printIngredient()
         {
-            string line = String.Format("{0,-15} {1,-15} {2,-15} {3,10} {4,10}", Name_of_Ingredient, Scaled_quantity, Scaled_Unit_of_Measurement, getcalories(), getFood_groups());
+            string line = String.Format("{0,-15} {1,-15} {2,-15} {3,10} {4,5}", Name_of_Ingredient, Scaled_quantity, Scaled_Unit_of_Measurement, getcalories(), getFood_groups());
             Console.WriteLine(line);
 
             
@@ -98,7 +98,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
             Alert  = Alertformat;
         }
         
-        public void check_Calories(int Calories, string name, float quantity, string unit)
+        public void check_Calories(float Calories, string name, float quantity, string unit)
         {
             if(Calories > 300)
             {

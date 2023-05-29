@@ -40,7 +40,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
 
         }
 
-        private void setTitle() //This is a setter method for the title of a recipe.
+        public void setTitle() //This is a setter method for the title of a recipe.
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("\n\nPlease enter a title for the recipe: ");
