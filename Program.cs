@@ -8,7 +8,9 @@ namespace ST10139225_K_Baholo_Part1.Classes
     {
         static void Main(string[] args)
         {
-           Recipe_V2 r = new Recipe_V2();
+            Master_Class_v2 m = new Master_Class_v2();  
+
+
 
 
 

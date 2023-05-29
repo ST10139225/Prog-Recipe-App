@@ -85,7 +85,7 @@ namespace ST10139225_K_Baholo_Part1.Classes
         }
 
 
-        public void PrintIngredient()
+        public void PrintIngredient_old()
             {
             string line = String.Format("{0,-15} {1,-15} {2,-13}", Name_of_Ingredient, Scaled_quantity, Scaled_Unit_of_Measurement);
             Console.WriteLine(line);
