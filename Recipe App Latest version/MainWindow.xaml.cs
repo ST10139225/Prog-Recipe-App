@@ -24,5 +24,10 @@ namespace Recipe_App_Latest_version
         {
             InitializeComponent();
         }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            System.Environment.Exit(0);
+        }
     }
 }

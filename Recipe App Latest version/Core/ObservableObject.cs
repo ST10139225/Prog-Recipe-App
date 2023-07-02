@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
 using System.ComponentModel;
 
-namespace Wpf_practice.core
+namespace Recipe_App_Latest_version.Core
 {
     public class ObservableObject : INotifyPropertyChanged 
     {

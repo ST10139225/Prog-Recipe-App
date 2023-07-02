@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Wpf_practice.core
+namespace Recipe_App_Latest_version.Core
 {
     internal class RelayCommand : ICommand
     {
@@ -27,9 +27,9 @@ namespace Wpf_practice.core
             _canExecute = canExecute;
         }
 
-        public bool canExecute(object parameter)
+        public bool CanExecute(object parameter)
         {
-            return _canExecute == null || canExecute(parameter);
+            return _canExecute == null || _canExecute(parameter);
         }
 
 
@@ -38,10 +38,6 @@ namespace Wpf_practice.core
             _execute(parameter);
         }
 
-        public bool CanExecute(object? parameter)
-        {
-            throw new NotImplementedException();
-        }
     }
 
 

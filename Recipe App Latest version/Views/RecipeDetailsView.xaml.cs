@@ -16,13 +16,18 @@ using System.Windows.Shapes;
 namespace Recipe_App_Latest_version.Views
 {
     /// <summary>
-    /// Interaction logic for UserControl1.xaml
+    /// Interaction logic for RecipeDetailsView.xaml
     /// </summary>
-    public partial class UserControl1 : UserControl
+    public partial class RecipeDetailsView : UserControl
     {
-        public UserControl1()
+        public RecipeDetailsView()
         {
             InitializeComponent();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

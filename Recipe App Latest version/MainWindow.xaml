@@ -3,14 +3,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Recipe_App_Latest_version"
+        xmlns:local="clr-namespace:Recipe_App_Latest_version.Viewmodel"
+       xmlns:viewModel="clr-namespace:Recipe_App_Latest_version.Viewmodel"
+        
         mc:Ignorable="d"
         Height="450" Width="800"
-        
         WindowStyle="None"
         ResizeMode="NoResize"
         Background="Transparent"
         AllowsTransparency="true">
+    <Window.DataContext>
+        <viewModel:MainViewM/>
+    </Window.DataContext>
 
     <Border 
         Background="Gray"
@@ -36,19 +40,28 @@
                 <RadioButton Content="Home"
                              Height="50"
                              Foreground="White"
-                             FontSize="14"/>
+                             FontSize="14"
+                             IsChecked="True"
+                             Command="{Binding AddRecipeCommand}"/>
                 <RadioButton Content="Discovery"
                              Height="50"
                              Foreground="White"
-                             FontSize="14"/>
+                             FontSize="14"
+                             Command="{Binding AddRecipeDetailsCommand}"/>
                 <RadioButton Content="Profile"
                              Height="50"
                              Foreground="White"
                              FontSize="14"/>
+                <Button Name="btnExit"
+                        Height="30"
+                        Width="200"
+                        Content="Exit" Click="btnExit_Click"
+                        />
             </StackPanel>
             <ContentControl Grid.Row="1"
                             Grid.Column="1"
-                            Margin="10"/>
+                            Margin="10"
+                            Content="{Binding CurrentView}"/>
 
         </Grid>
        </Border>

@@ -19,3 +19,9 @@ C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App 
 C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\Recipe App Latest version.pdb
 C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\Recipe App Latest version.genruntimeconfig.cache
 C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\ref\Recipe App Latest version.dll
+C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\Views\Add recipe.g.cs
+C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\Views\Add recipe.baml
+C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\App.baml
+C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\Views\RecipeDetailsView.g.cs
+C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\Views\RecipeDetailsView.baml
