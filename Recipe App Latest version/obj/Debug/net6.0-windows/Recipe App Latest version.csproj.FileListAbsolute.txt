@@ -1,0 +1,21 @@
+C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\bin\Debug\net6.0-windows\Recipe App Latest version.exe
+C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\bin\Debug\net6.0-windows\Recipe App Latest version.deps.json
+C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\bin\Debug\net6.0-windows\Recipe App Latest version.runtimeconfig.json
+C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\bin\Debug\net6.0-windows\Recipe App Latest version.dll
+C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\bin\Debug\net6.0-windows\Recipe App Latest version.pdb
+C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\Recipe App Latest version.csproj.AssemblyReference.cache
+C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\MainWindow.g.cs
+C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\App.g.cs
+C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\Recipe App Latest version_MarkupCompile.cache
+C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\Recipe App Latest version_MarkupCompile.lref
+C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\MainWindow.baml
+C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\Recipe App Latest version.g.resources
+C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\Recipe App Latest version.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\Recipe App Latest version.AssemblyInfoInputs.cache
+C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\Recipe App Latest version.AssemblyInfo.cs
+C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\Recipe App Latest version.csproj.CoreCompileInputs.cache
+C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\Recipe App Latest version.dll
+C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\refint\Recipe App Latest version.dll
+C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\Recipe App Latest version.pdb
+C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\Recipe App Latest version.genruntimeconfig.cache
+C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\ref\Recipe App Latest version.dll
