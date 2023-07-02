@@ -1,20 +1,20 @@
 ﻿Recipe App Latest version
-
+1.0.0.0
 
 winexe
 C#
 .cs
-C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\
+c:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\
 Recipe_App_Latest_version
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\App.xaml
-11407045341
+c:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\App.xaml
+3582291898
 
-3-1233169557
+16-1259397950
 194237474483
-MainWindow.xaml;
+MainWindow.xaml;Views\Add recipe.xaml;Views\UserControl1.xaml;
 
-False
+True
 
