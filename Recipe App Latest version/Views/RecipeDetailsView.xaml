@@ -22,7 +22,7 @@
             <RowDefinition Height="61.8"/>
             <RowDefinition Height="75"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Recipe Name:"
+        <TextBlock Text="Ingredient :"
                  FontSize="18"
                  Background="Transparent"
                  Grid.Column="0"

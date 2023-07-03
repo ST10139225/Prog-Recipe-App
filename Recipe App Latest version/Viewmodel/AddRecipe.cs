@@ -15,6 +15,7 @@ namespace Recipe_App_Latest_version.Viewmodel
 
 		private string _recipName;
 
+		
         public string RecipeName
 		{
 			get { return _recipName; }

@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="Recipe_App_Latest_version.Views.StepsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Recipe_App_Latest_version.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="350" d:DesignWidth="800" Background="Gray">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="210"/>
+            <ColumnDefinition/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="13.2"/>
+            <RowDefinition Height="61.8"/>
+            <RowDefinition Height="75"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Set{Binding Stepnumber}"
+                 FontSize="18"
+                 Background="Transparent"
+                 Grid.Column="0"
+                 Grid.Row="0"
+                 
+                 
+                />
+        <TextBlock Text="Step Description:"
+                 FontSize="18"
+                 Background="Transparent"
+                 Grid.Column="0"
+                 Grid.Row="1" />
+        <Button x:Name="btnIngNext" Grid.Column="1" 
+                Content="Next" 
+                HorizontalAlignment="Left" 
+                Margin="348,10,0,0" 
+                Grid.Row="3" 
+                VerticalAlignment="Top" 
+                Height="42" Width="158"
+                Command="{Binding Submit}"/>
+        <RichTextBox x:Name="richTextBox" Margin="0,44,84,45" Grid.RowSpan="3" Grid.Column="1"
+                     >
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="{Binding Stepdescription}"
+                         FontSize="16"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+
+
+    </Grid>
+</UserControl>

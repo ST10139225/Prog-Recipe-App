@@ -10,7 +10,13 @@
     <Compile Update="Views\Add recipe.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\DisplayaRecipe.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\RecipeDetailsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\StepsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -21,7 +27,13 @@
     <Page Update="Views\Add recipe.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\DisplayaRecipe.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\RecipeDetailsView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\StepsView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

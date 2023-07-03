@@ -25,3 +25,7 @@ C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App 
 C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\App.baml
 C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\Views\RecipeDetailsView.g.cs
 C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\Views\RecipeDetailsView.baml
+C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\Views\StepsView.g.cs
+C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\Views\StepsView.baml
+C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\Views\DisplayaRecipe.g.cs
+C:\Users\lab_services_student\source\repos\Recipe App Latest version\Recipe App Latest version\obj\Debug\net6.0-windows\Views\DisplayaRecipe.baml
