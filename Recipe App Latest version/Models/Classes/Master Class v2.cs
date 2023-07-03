@@ -7,11 +7,9 @@ using System.Threading.Tasks;
 
 namespace Recipe_App_Latest_version.Classes
 {
-    internal class Master_Class_v2: Master_class
-    {
-       
-        public Master_Class_v2()
-        { }
+    internal class Master_Class_v2
+
+    { 
 
 
 

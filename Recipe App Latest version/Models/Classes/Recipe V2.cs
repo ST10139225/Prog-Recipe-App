@@ -7,7 +7,8 @@ using System.Xml.Linq;
 
 namespace Recipe_App_Latest_version.Classes
 {
-    internal class Recipe_V2: Recipe 
+    internal class Recipe_V2
+    { /*
     {
         public List<Steps> Steps_list = new List<Steps>();
         public List<Ingredients_v2>Ingredient_list =  new List<Ingredients_v2>();
@@ -280,6 +281,6 @@ namespace Recipe_App_Latest_version.Classes
 
 
 
-
+        */
     }
 }

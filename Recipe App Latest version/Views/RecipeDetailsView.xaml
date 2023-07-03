@@ -6,8 +6,111 @@
              xmlns:local="clr-namespace:Recipe_App_Latest_version.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             Background="AliceBlue">
+             Background="Gray">
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="210"/>
+            <ColumnDefinition/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="13.2"/>
+            <RowDefinition Height="61.8"/>
+            <RowDefinition Height="75"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Recipe Name:"
+                 FontSize="18"
+                 Background="Transparent"
+                 Grid.Column="0"
+                 Grid.Row="0"
+                 
+                 
+                />
+        <TextBlock Text="Ingredient Name:"
+                 FontSize="18"
+                 Background="Transparent"
+                 Grid.Column="0"
+                 Grid.Row="1"
+                 
+                 
+                />
+        <TextBlock Text="Quantity:"
+                 FontSize="18"
+                 Background="Transparent"
+                 Grid.Column="0"
+                 Grid.Row="2"
+                 
+                 
+                />
+        <TextBlock Text="Unit of measurement:"
+                 FontSize="18"
+                 Background="Transparent"
+                 Grid.Column="0"
+                 Grid.Row="3"
+                 
+                 
+                />
+        <TextBlock Text="Calories:"
+                 FontSize="18"
+                 Background="Transparent"
+                 Grid.Column="0"
+                 Grid.Row="4" Grid.RowSpan="2"
+                 
+                 
+                />
+
+        <TextBox
+                Width="250"
+                Height="40"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                Margin="65,0,0,0"
+                Grid.Column="1" 
+                TextChanged="TextBox_TextChanged"
+                Grid.Row="1"
+            Text="{Binding RecipeName}"/>
+
+        <ComboBox x:Name="cbxQuantity" 
+                  Width="120" 
+                  Grid.Column="1" 
+                  Margin="65,16,405,16" 
+                  Grid.Row="2" IsReadOnly="True"
+                  />
+
+        <ComboBox
+            Width="120"
+            Height="40"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            Margin="65,0,0,0"
+            Grid.Column="1" 
+            Grid.Row="3"
+            x:Name="cbxUnit" 
+            ItemsSource="{Binding}"/>
+
+        <TextBox
+            Width="250"
+            Height="40"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Margin="65,10,0,0"
+            Grid.Column="1" 
+            TextChanged="TextBox_TextChanged"
+            Grid.Row="4"
+            Text="{Binding Calories}" Grid.RowSpan="2"/>
+        <Button x:Name="btnIngNext" Grid.Column="1" 
+                Content="Next" 
+                HorizontalAlignment="Left" 
+                Margin="295,10,0,0" 
+                Grid.Row="6" 
+                VerticalAlignment="Top" 
+                Height="42" Width="158"
+                Command="{Binding Submit}"/>
+
+
     </Grid>
 </UserControl>

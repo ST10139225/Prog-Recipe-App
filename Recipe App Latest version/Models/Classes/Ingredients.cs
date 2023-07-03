@@ -15,34 +15,23 @@ namespace Recipe_App_Latest_version.Classes
         public string Scaled_Unit_of_Measurement; //To store the scaled unit of measurement of an ingredient
        
 
-        public Ingredients()
+        public Ingredients(string Ingredientsname)
         {
-            setName();
+            setName(Ingredientsname);
             setQuantity();
             setUnit_of_meausurement();
 
         }
 
-        private void setName() //This method of setting the name of the ingredient. It has input validation.
+        private void setName(String UserInput) //This method of setting the name of the ingredient. It has input validation.
         {
             Console.ForegroundColor = ConsoleColor.White; //To change color to show invalid input.
 
-            String UserInput ="";
+           
             Console.WriteLine("Please enter the name of the ingredient:");
-
-            UserInput = Console.ReadLine();
             if (UserInput != null && UserInput.Equals("")!=true)
             {
                 Name_of_Ingredient = UserInput;
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Red; //To change color to show invalid input.
-                Console.WriteLine("Not empty space please!!");
-       
-                setName();
-
-
             }
 
         }
